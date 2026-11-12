@@ -13,6 +13,7 @@
     ["guild.html", "Guild & Team", "guild"],
     ["endgame.html", "Other Endgame", "endgame"],
     ["tools.html", "Group Tools", "tools"],
+    ["buildlab.html", "Build Lab", "buildlab"],
     ["search.html", "Search", "search"],
     ["sources.html", "Sources", "sources"],
   ];
@@ -616,6 +617,7 @@
   function boot() {
     const page = document.body.dataset.page;
     renderChrome(page);
+    if (page === "buildlab") return; // Build Lab renders itself (assets/js/buildlab/buildlab.js)
     loadAll().then((data) => {
       switch (page) {
         case "home": return renderHome(data);
@@ -632,5 +634,7 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 
   // Exposed for the validator script / debugging only.
-  window.SantanaGuide = { resetInfo, lastReset, parseServerDate, buildIndex };
+  window.SantanaGuide = { resetInfo, lastReset, parseServerDate, buildIndex,
+    // Shared helpers for Build Lab (assets/js/buildlab/buildlab.js)
+    helpers: { $, $$, esc, arr, store, loadJSON, toast, copyText, verifyBadge, host, fail } };
 })();

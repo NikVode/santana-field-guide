@@ -1,0 +1,733 @@
+{
+  "gameVersion": "2.3",
+  "lastVerified": "2026-11-12",
+  "note": "One recommended PvE build per path. Ratings treat each one, at max Inner Way tiers, as 100. recommendedTier is the guides' advice on where to stop upgrading; it isn't used by the rating.",
+  "builds": [
+    {
+      "id": "splendor-pve",
+      "path": "bellstrike-splendor",
+      "name": "Sword Morph volley (PvE)",
+      "martialArts": [
+        "nameless-sword",
+        "nameless-spear"
+      ],
+      "innerWays": [
+        {
+          "id": "sword-morph",
+          "recommendedTier": 6,
+          "note": "Core; upgrade first."
+        },
+        {
+          "id": "battle-anthem",
+          "recommendedTier": 6
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 5,
+          "note": "Safest third slot; Tier 5 is enough if materials are short."
+        },
+        {
+          "id": "mountains-might",
+          "recommendedTier": 6,
+          "note": "Core for PvE now; upgrade second."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Jadeware or Hawkwing",
+        "armor": "Formbend",
+        "alternatives": [
+          "Hawkwing is the simpler weapon set; Jadeware is the optimized PvE pick and triggers on a Qi-Imbalanced boss",
+          "Eaglerise armor",
+          "Calmwaters armor for 1v1 PvP"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Dragon Head",
+        "Soaring Spin"
+      ],
+      "why": "Charge Vagrant Sword behind a Qi shield for sword-energy volleys; the spear's Qiankun's Lock sets up Qi Imbalance on the boss and cuts Endurance costs.",
+      "rotation": "Spear first for Qi Imbalance, then chain Vagrant Sword volleys within 5s of each other. Dragon Head fills when Endurance is low; Dragon's Breath into Drunken Poet when the boss opens up.",
+      "alternatives": [
+        "Adaptive Steel or Wildfire Spark in the fourth slot",
+        "Insightful Strike (Tier 5+) instead of Morale Chant for an Affinity-stacked build",
+        "1v1 PvP: Sword Morph, Morale Chant, Fury Harvest, Evasive Charge"
+      ],
+      "agreement": "Both sources list the same four Inner Ways. They disagree on the weapon set: wherewindsmeetgame.org leads with Hawkwing, Game8 with Jadeware.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Nameless Sword build (checked Nov 5, 2026, Version 2.3)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-nameless-sword-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Nameless Spear and Nameless Sword (Bellstrike Splendor) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564826",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "umbra-pve",
+      "path": "bellstrike-umbra",
+      "name": "Bleed burst (PvE)",
+      "martialArts": [
+        "strategic-sword",
+        "heavenquaker-spear"
+      ],
+      "innerWays": [
+        {
+          "id": "sword-horizon",
+          "recommendedTier": 6,
+          "note": "Most important; level it first."
+        },
+        {
+          "id": "wolfchasers-art",
+          "recommendedTier": 6,
+          "note": "Level it early."
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "insightful-strike",
+          "recommendedTier": 6,
+          "note": "Much better at high tiers; raise Morale Chant first if materials are short."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Hawkwing",
+        "armor": "Flawless Defense",
+        "alternatives": [
+          "Eaglerise armor (Bleed keeps its stacks up)",
+          "Strong offensive armor rolls can beat a full armor set"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Dragon Head"
+      ],
+      "why": "Stack 5 Bleed with the Strategic Sword, cash it in with Sword Horizon's High Bleeding, and keep Sober Sorrow's combo buffs up with the spear.",
+      "rotation": "Build Bleed, time Crisscrossing Swords follow-ups, keep Sober Sorrow's combo count high. Swap Dragon Head for Soaring Spin or Cloud Steps when the boss moves.",
+      "alternatives": [
+        "Invigorated Warrior until Insightful Strike is upgraded",
+        "Breaking Point",
+        "Bitter Seasons or Fivefold Bleed for extra DoTs"
+      ],
+      "agreement": "Both sources list the same four Inner Ways and Hawkwing + Flawless Defense.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Strategic Sword build (checked Oct 8, 2026)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-strategic-sword-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Strategic Sword and Heavenquaker Spear (Bellstrike Umbra) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564771",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "wind-pve",
+      "path": "bamboocut-wind",
+      "name": "Rodents and Flamelash (PvE)",
+      "martialArts": [
+        "infernal-twinblades",
+        "mortal-rope-dart"
+      ],
+      "innerWays": [
+        {
+          "id": "echoes-of-oblivion",
+          "recommendedTier": 6,
+          "note": "Most important; level it first."
+        },
+        {
+          "id": "vendetta",
+          "recommendedTier": 6,
+          "note": "Level it early."
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "breaking-point",
+          "recommendedTier": 6,
+          "note": "Best at Tier 6 when you burst Exhausted targets."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Hawkwing",
+        "armor": "Eaglerise",
+        "alternatives": [
+          "Swallowcall + Calmwaters for everyday content and PvP"
+        ]
+      },
+      "mysticSkills": [
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Dragon Head",
+        "Flute of the Tides"
+      ],
+      "why": "Keep the Mortal Rope Dart's rats running (about 40% of boss damage) while the Twinblades' Flamelash Light Attacks do most of the rest.",
+      "rotation": "Rope dart setup for Rodent Rampage, then Twinblade Flamelash chains. Use Mystic Arts in rope-dart setup or Flamelash downtime, not in the middle of a strong chain.",
+      "alternatives": [
+        "Vital Leech in the fourth slot (Game8's pick), swapping Breaking Point in for Exhausted bursts",
+        "Fivefold Bleed or Riptide Reflex (situational)"
+      ],
+      "agreement": "Three Inner Ways agree. Fourth slot: wherewindsmeetgame.org (Nov 5, 2026) picks Breaking Point, Game8 (Sep 3) picks Vital Leech. We use Breaking Point, the newer pick; Vital Leech is the listed alternative.",
+      "needsVerification": true,
+      "verifyNotes": [
+        "Sources disagree on the fourth Inner Way (Breaking Point vs Vital Leech)."
+      ],
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Dual Blades build (checked Nov 5, 2026, Version 2.3)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-dual-blades-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Infernal Twinblades and Rope Dart (Bamboocut Wind) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564889",
+          "site": "game8.co"
+        }
+      ],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "dust-pve",
+      "path": "bamboocut-dust",
+      "name": "Phantom umbrellas (PvE)",
+      "martialArts": [
+        "everspring-umbrella",
+        "unfettered-rope-dart"
+      ],
+      "innerWays": [
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "phantom-rally",
+          "recommendedTier": 6
+        },
+        {
+          "id": "towline-sweep",
+          "recommendedTier": 6
+        },
+        {
+          "id": "song-of-tang",
+          "recommendedTier": 6,
+          "note": "Core in PvE; swap for Vital Leech in PvP."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Stars Align",
+        "armor": "Calmwaters",
+        "alternatives": [
+          "Agile Steps armor if you parry more than you dodge",
+          "Jade Embrace or Flawless Defense armor",
+          "Fletchlodge on bow and ring"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Cloud Steps"
+      ],
+      "why": "Scarlet Spin's phantom umbrellas resonate for area damage and shred resistance, while the Unfettered Rope Dart stacks Soul Loss for its bursts.",
+      "rotation": "Keep phantoms up and trigger resonance with Perfect Catches; apply Burn with Dragon's Breath and turn it into burst with Drunken Poet.",
+      "alternatives": [
+        "Light Anew (aggressive PvP)",
+        "Vital Leech instead of Song of Tang in PvP"
+      ],
+      "agreement": "Both sources list the same four Inner Ways and Stars Align + Calmwaters.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Umbrella build (checked Oct 8, 2026)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-umbrella-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Unfettered Rope Dart and Everspring Umbrella (Bamboocut Dust) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/582577",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "kite-pve",
+      "path": "bamboocut-kite",
+      "name": "Vile Condemned burst (PvE)",
+      "martialArts": [
+        "heavenwill-gauntlets",
+        "skygrasp-rope-dart"
+      ],
+      "innerWays": [
+        {
+          "id": "soaring-high",
+          "recommendedTier": 6,
+          "note": "Top priority; get it to Tier 6."
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 5,
+          "note": "Can stay at Tier 5."
+        },
+        {
+          "id": "sky-gripped",
+          "recommendedTier": 6
+        },
+        {
+          "id": "empirical-edge",
+          "recommendedTier": 6,
+          "note": "Most consistent fourth slot."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Etherwrath",
+        "armor": "Honorbound",
+        "alternatives": [
+          "Rainwhisper weapons if its rolls are much better"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Soaring Spin"
+      ],
+      "why": "Open with the Skygrasp Rope Dart to apply Heaven's Might and gather enemies, then spend Heaven's Will on the Heavenwill Gauntlets' Vile Condemned finisher.",
+      "rotation": "Rope dart setup, Flute of the Tides, gauntlet combo into Falcon's Pursuit and Vile Condemned: End, Soaring Spin after the charged skill. Below 50% boss Qi use the boss Perception Skill; reset End against Exhausted bosses.",
+      "alternatives": [
+        "Invigorated Warrior (needs Tier 6)",
+        "Breaking Point (speedruns, PvP)"
+      ],
+      "agreement": "One source (Game8). wherewindsmeetgame.org rates the path but has no build guide for it.",
+      "needsVerification": true,
+      "verifyNotes": [
+        "Only one source for this build."
+      ],
+      "sources": [
+        {
+          "title": "Game8: Heavenwill Gauntlets and Skygrasp Rope Dart (Bamboocut - Kite) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/612145",
+          "site": "game8.co"
+        }
+      ],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "draught-pve",
+      "path": "bamboocut-draught",
+      "name": "Deepdaze loop (PvE)",
+      "martialArts": [
+        "skystrike-gauntlets",
+        "riven-twinblades"
+      ],
+      "innerWays": [
+        {
+          "id": "eonpour",
+          "recommendedTier": 6,
+          "note": "Signature Inner Way; upgrade first."
+        },
+        {
+          "id": "skyspeak",
+          "recommendedTier": 6
+        },
+        {
+          "id": "mistwing",
+          "recommendedTier": 6
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 5,
+          "note": "Can stay at Tier 5."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Tiltrim",
+        "armor": "Brimflow",
+        "alternatives": []
+      },
+      "mysticSkills": [
+        "Flute of the Tides (cancel after the first hit)",
+        "Soaring Spin",
+        "Dragon's Breath",
+        "Drunken Poet"
+      ],
+      "why": "Build Binge Points to 200, enter Deepdaze and land three enhanced gauntlet Heavy Attack sequences, then finish with the Twinblades.",
+      "rotation": "Twinblades start the Binge Point loop, gauntlets carry it to 200, Deepdaze burst, Twinblades finish. Don't put long Mystic Arts inside Deepdaze.",
+      "alternatives": [
+        "Volutefit (safer, for learning fights)",
+        "Invigorated Warrior at Tier 6"
+      ],
+      "agreement": "One source (Game8).",
+      "needsVerification": true,
+      "verifyNotes": [
+        "Only one source for this build."
+      ],
+      "sources": [
+        {
+          "title": "Game8: Skystrike Gauntlets and Riven Twinblades (Bamboocut - Draught) Build (updated Oct 15, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/618351",
+          "site": "game8.co"
+        }
+      ],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "jade-pve",
+      "path": "silkbind-jade",
+      "name": "Projectile pressure (PvE)",
+      "martialArts": [
+        "vernal-umbrella",
+        "inkwell-fan"
+      ],
+      "innerWays": [
+        {
+          "id": "blossom-barrage",
+          "recommendedTier": 6,
+          "note": "Most important."
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "star-reacher",
+          "recommendedTier": 6
+        },
+        {
+          "id": "thunderous-bloom",
+          "recommendedTier": 6,
+          "note": "Best general fourth slot since 1.7."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Mistwillow",
+        "armor": "Flawless Defense",
+        "alternatives": [
+          "Hawkwing at ~16% Affinity and 75.3% Critical Rate",
+          "Rainwhisper"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Drunken Poet",
+        "Soaring Spin",
+        "Leaping Toad",
+        "Dragon's Breath"
+      ],
+      "why": "Spring Sorrow's Combo debuff makes the target take more from your projectile skills; Lingering Bone powers Star Reacher.",
+      "rotation": "Open with Flute of the Tides, keep Jadebreak, Lingering Bone, Combo, Blossoms and the drone up; Drunken Poet into Qi Break windows.",
+      "alternatives": [
+        "Breaking Point if you reliably hit Perfect Dodge windows"
+      ],
+      "agreement": "One source for PvE (Game8). wherewindsmeetgame.org only has a PvP guide for this path.",
+      "needsVerification": true,
+      "verifyNotes": [
+        "Only one PvE source for this build."
+      ],
+      "sources": [
+        {
+          "title": "Game8: Vernal Umbrella and Inkwell Fan (Silkbind Jade) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564879",
+          "site": "game8.co"
+        },
+        {
+          "title": "wherewindsmeetgame.org: Silkbind - Jade PvP build (PvP only) (checked 2026)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-silkbind-jade-pvp-build",
+          "site": "wherewindsmeetgame.org"
+        }
+      ],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "deluge-pve",
+      "path": "silkbind-deluge",
+      "name": "Healer (PvE)",
+      "martialArts": [
+        "panacea-fan",
+        "soulshade-umbrella"
+      ],
+      "innerWays": [
+        {
+          "id": "royal-remedy",
+          "recommendedTier": 5,
+          "note": "Tier 5 if you want more Vitality; Tier 6 for survival."
+        },
+        {
+          "id": "restoring-blossom",
+          "recommendedTier": 6
+        },
+        {
+          "id": "mending-loom",
+          "recommendedTier": 6
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6,
+          "note": "Replaces Esoteric Revival; the first to upgrade."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Ivorybloom",
+        "armor": "Eaglerise",
+        "alternatives": [
+          "Whirlsnow armor",
+          "Rainwhisper weapons for PvP"
+        ]
+      },
+      "mysticSkills": [
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Flute of the Tides",
+        "Cloud Steps"
+      ],
+      "why": "Keep the Soulshade Umbrella out for passive healing and Dew, heal with the Panacea Fan, and crit-heal as often as possible.",
+      "rotation": "Umbrella up, Cloudburst Healing on the group, Light Dust for emergencies. Mystic Arts for damage only when healing is stable.",
+      "alternatives": [
+        "Esoteric Revival (revive-focused)",
+        "PvP: Fury Harvest, Divine Roulette or Vital Leech"
+      ],
+      "agreement": "Both sources list the same four Inner Ways and Ivorybloom + Eaglerise.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Healer build (checked Nov 5, 2026, Version 2.3)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-healer-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Panacea Fan and Soulshade Umbrella (Silkbind Deluge) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564719",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "wings-pve",
+      "path": "silkbind-wings",
+      "name": "Radiant Drum support (PvE)",
+      "martialArts": [
+        "museflow-waist-drum",
+        "willowbend-fan"
+      ],
+      "innerWays": [
+        {
+          "id": "harmony-song",
+          "recommendedTier": 6,
+          "note": "Most important; Tier 4 early for the cooldown reset."
+        },
+        {
+          "id": "zephyr-whispers",
+          "recommendedTier": 6,
+          "note": "Tier 3 early for Noble Will."
+        },
+        {
+          "id": "ink-and-strings",
+          "recommendedTier": 6
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6,
+          "note": "Better than Blade's Will on single bosses."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Cloudshear",
+        "armor": "Reinchime",
+        "alternatives": []
+      },
+      "mysticSkills": [
+        "Flute of the Tides (cancel after the first hit)",
+        "Soaring Spin",
+        "Leaping Toad"
+      ],
+      "why": "Keep Rustling and Radiant Drum up to raise the whole party's Attack while the Waist Drum deals the damage.",
+      "rotation": "Fan for Rustling and Ink Rhythm, Rippling Dew while Rustling is up, Plumage Sweep and Heavy Attacks to rebuild Noble Will.",
+      "alternatives": [
+        "Blade's Will for big PvP and guild battles"
+      ],
+      "agreement": "One source (Game8, Oct 16, 2026). The path is new in 2.3 and wherewindsmeetgame.org hasn't published a build yet.",
+      "needsVerification": true,
+      "verifyNotes": [
+        "Only one source; new path in 2.3.",
+        "Your own rating doesn't include what Radiant Drum gives your allies."
+      ],
+      "sources": [
+        {
+          "title": "Game8: Museflow Waist Drum and Willowbend Fan (Silkbind - Wings) Build (updated Oct 16, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/631913",
+          "site": "game8.co"
+        }
+      ],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "might-pve",
+      "path": "stonesplit-might",
+      "name": "Mo Blade tank (PvE)",
+      "martialArts": [
+        "thundercry-blade",
+        "stormbreaker-spear"
+      ],
+      "innerWays": [
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "exquisite-scenery",
+          "recommendedTier": 6,
+          "note": "Core: opens the charged-attack windows."
+        },
+        {
+          "id": "adaptive-steel",
+          "recommendedTier": 6,
+          "note": "Steadiest third pick."
+        },
+        {
+          "id": "throat-piercing-art",
+          "recommendedTier": 5,
+          "note": "Tier 5 is enough."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Rainwhisper",
+        "armor": "Formbend",
+        "alternatives": [
+          "Flawless Defense armor",
+          "Moonflare armor until you have Formbend",
+          "Calmwaters armor for PvP"
+        ]
+      },
+      "mysticSkills": [
+        "Dragon's Breath",
+        "Drunken Poet",
+        "Cloud Steps",
+        "Golden Body"
+      ],
+      "why": "Defend with the Thundercry Blade to fire instant stage-3 charged attacks; nearly all damage is charged crits, which can't Abrade.",
+      "rotation": "Taunt with Storm Roar, defend into Defensive Riposte, spend Battle Will on charged attacks. Dragon's Breath + Drunken Poet for burst.",
+      "alternatives": [
+        "Art of Resistance (group play, shield)",
+        "Battle Anthem (solo)",
+        "Breaking Point (speedruns)",
+        "PvP: Vital Leech or Trapped Beast"
+      ],
+      "agreement": "Both sources list the same four Inner Ways and Rainwhisper + Formbend.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Mo Blade build (checked Oct 8, 2026)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-mo-blade-build-guide",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Thundercry Blade and Stormbreaker Spear (Stonesplit - Might) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/564797",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    },
+    {
+      "id": "strength-pve",
+      "path": "stonesplit-strength",
+      "name": "Phalanxbane focus (PvE)",
+      "martialArts": [
+        "snowparting-blade",
+        "phalanxbane-blade"
+      ],
+      "innerWays": [
+        {
+          "id": "frost-clad-night",
+          "recommendedTier": 6,
+          "note": "Core; breakpoints at Tiers 3, 4 and 6."
+        },
+        {
+          "id": "throat-piercing-art",
+          "recommendedTier": 6,
+          "note": "Core in PvE; swap out in PvP."
+        },
+        {
+          "id": "morale-chant",
+          "recommendedTier": 6
+        },
+        {
+          "id": "steadfast-devotion",
+          "recommendedTier": 6,
+          "note": "Core for the Phalanxbane focus; breakpoints at 3, 4 and 6."
+        }
+      ],
+      "gearSet": {
+        "weaponsAccessories": "Shattered Ridge",
+        "armor": "Obsidian Armor",
+        "alternatives": [
+          "Rainwhisper weapons for more damage",
+          "Eaglerise armor",
+          "Agile Steps armor for PvP",
+          "Fletchlodge on bow and ring"
+        ]
+      },
+      "mysticSkills": [
+        "Flute of the Tides",
+        "Dragon Head",
+        "Dragon's Breath",
+        "Drunken Poet"
+      ],
+      "why": "Snowparting Blade deflects and follow-ups feed Inner Passion; the Phalanxbane Blade's Burning Heart cashes it in with guaranteed crits at 75%+ Critical Rate.",
+      "rotation": "Deflect into Snowbreak Spring, Fleeting Trace for Inner Passion, Burning Heart with the Anxi soldier. Flute of the Tides before the main burst.",
+      "alternatives": [
+        "Snowparting focus: Invigorated Warrior, Adaptive Steel or Breaking Point instead of Steadfast Devotion",
+        "Battle Anthem for the Phalanxbane focus"
+      ],
+      "agreement": "Both sources list the same four Inner Ways and Shattered Ridge + Obsidian Armor.",
+      "sources": [
+        {
+          "title": "wherewindsmeetgame.org: Stonesplit - Strength build (checked Oct 7, 2026)",
+          "url": "https://www.wherewindsmeetgame.org/guides/where-winds-meet-stonesplit-strength-build",
+          "site": "wherewindsmeetgame.org"
+        },
+        {
+          "title": "Game8: Snowparting Blade and Phalanxbane Blade (Stonesplit Strength) Build (updated Sep 3, 2026)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/589037",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [],
+      "lastVerified": "2026-11-12",
+      "gameVersion": "2.3"
+    }
+  ]
+}
