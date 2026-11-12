@@ -243,3 +243,8 @@ td a.row-link { font-weight: 600; }
   .print-hide, .video-list, .sources-block, .rewards-block { display: none !important; }
   .boss { margin-top: 6pt; border-top: 1px solid #000; }
 }
+
+/* Static "unofficial fan site" notice (in the HTML itself, not rendered by JS) */
+.fan-note { max-width: 1100px; margin: 0 auto; padding: 8px 16px; font-size: .82rem; color: var(--paper-dim); border-bottom: 1px dashed var(--line); }
+.fan-note strong { color: var(--paper); }
+@media print { .fan-note { display: none; } }
