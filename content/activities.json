@@ -1,0 +1,736 @@
+{
+  "_readme": "Guild, team, PvP and event content. category is one of guild | team | pvp | event. See README.md.",
+  "activities": [
+    {
+      "id": "skyward-bond",
+      "name": "Skyward Bond (Guild Challenge)",
+      "category": "guild",
+      "players": "Up to 10 guild members",
+      "coverage": "partial",
+      "added": {
+        "version": "1.7",
+        "date": "2026-05-28"
+      },
+      "unlock": "Character Lv 95, guild members only.",
+      "schedule": "Floors 1–5 open at launch, higher floors unlock over time. The Guild Giftbox for Guild Hero's Realm is based on the highest floor the guild cleared the previous week.",
+      "how": [
+        "A multi-floor guild tower. Early floors are Twin Lions and Ghost Master, killed inside a time limit.",
+        "Higher floors bring different bosses and climb in difficulty. Hard and Abyss tiers came in 1.8; 2.1 raised Hard to Tier 10 (Tiers 1–5 on Aug 20, 6–10 on Aug 27), with bosses including Guo Xin and Moongazing Maiden and new leaderboards.",
+        "Time limit example: Sleeping Daoist (Hard/Abyss) has 450 s since Jul 9 (was 360 s)."
+      ],
+      "tips": [
+        "Push the highest floor you can each week: it sets next week's Guild Giftbox tier for everyone in the guild.",
+        "Only one guild team needs to clear a floor for everyone to claim the Guild First Clear reward. Rotate who runs it so more people get the Personal First Clear too."
+      ],
+      "rewards": [
+        "Guild First Clear (all guild members once any team clears)",
+        "Personal First Clear (players who cleared)",
+        "Better Guild Giftboxes for Guild Hero's Realm"
+      ],
+      "videos": [
+        {
+          "title": "GvE Guild Challenge: Skyward Bond Floor 5 (Tank PoV)",
+          "url": "https://www.youtube.com/watch?v=PILEa9DBuTY"
+        },
+        {
+          "title": "GvE Guild Challenge: Skyward Bond Floor 10 (Tank PoV)",
+          "url": "https://www.youtube.com/watch?v=cSCPZRm7Vu0"
+        },
+        {
+          "title": "GvE Guild Challenge: Skyward Bond Abyss Floor 5 (Tank PoV)",
+          "url": "https://www.youtube.com/watch?v=h23Gs8OEYYM"
+        },
+        {
+          "title": "Skyward Bond Floor 10 guild clear",
+          "url": "https://www.youtube.com/watch?v=XeyP1ByejII"
+        },
+        {
+          "title": "Skyward Bond Normal Floor 10 (healer, blind)",
+          "url": "https://www.youtube.com/watch?v=X6eQN1-NMVk"
+        },
+        {
+          "title": "Skyward Bond Normal Floor 8",
+          "url": "https://www.youtube.com/watch?v=33_8n4jRZsA"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Game8: Version 1.7 The Imperial Palace summary",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/602517",
+          "site": "game8.co"
+        },
+        {
+          "title": "GameSpace: Version 1.7 The Imperial Palace",
+          "url": "https://gamespace.com/all-articles/news/where-winds-meet-version-1-7-the-imperial-palace/",
+          "site": "gamespace.com"
+        },
+        {
+          "title": "Topuplist: 1.8 events (Hard / Abyss tiers)",
+          "url": "https://topuplist.com/blogs/detail/where-winds-meet-1-8-events-guide",
+          "site": "topuplist.com",
+          "note": "commercial site"
+        },
+        {
+          "title": "Official: 1.8 patch notes (Jun 25 / Jul 9 fixes, Skyward Bond Hard & Abyss)",
+          "url": "https://wherewindsmeetgame.com/news/official/625update.html",
+          "site": "wherewindsmeetgame.com"
+        },
+        {
+          "title": "Game8: Version 2.1 Clouded Revelation summary",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/616291",
+          "site": "game8.co"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [
+        "No floor-by-floor mechanics guide exists yet, so the guild should write its own notes per floor.",
+        "The 450 s figure comes from a Patchbot copy of the Jul 9 notes."
+      ]
+    },
+    {
+      "id": "guild-heros-realm",
+      "name": "Guild Hero's Realm",
+      "category": "guild",
+      "players": "Guild members",
+      "coverage": "partial",
+      "unlock": "Guild membership.",
+      "schedule": "Once per week.",
+      "how": [
+        "A weekly guild activity that gives Guild Activity Points. Skyward Bond progress improves its Guild Giftbox.",
+        "Since 2.2 (Sep 16), boss talent tracking records reward counts for both bosses after a clear.",
+        "Ravening Banes runs as a Guild Hero's Realm (official Jul 2 notes fix its guild challenge).",
+        "Unclaimed rewards can still be claimed later the same week; invites now say whether they're for Guild or Wandering Paths Hero's Realm (official Jan 12 notes)."
+      ],
+      "tips": [
+        "Run it after the guild's Skyward Bond push, since the Giftbox is based on last week's highest floor."
+      ],
+      "rewards": [
+        "Guild Activity Points (Treasure Tokens for the guild shop)",
+        "Guild Giftbox (tier from Skyward Bond)"
+      ],
+      "sources": [
+        {
+          "title": "Nerdschalk: Daily & weekly activities",
+          "url": "https://nerdschalk.com/daily-weekly-activities-in-where-winds-meet-guide/",
+          "site": "nerdschalk.com"
+        },
+        {
+          "title": "Game8: Version 1.7 summary (Giftbox link)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/602517",
+          "site": "game8.co"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Official (Steam News): 1.8 patch notes (Jul 2) and Jan 12 notes",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Full list of Guild Hero's Realm bosses and the party size not published."
+      ]
+    },
+    {
+      "id": "breaking-army-showdown",
+      "name": "Breaking Army & Guild Showdown",
+      "category": "guild",
+      "players": "Guild members",
+      "coverage": "stub",
+      "unlock": "Guild membership.",
+      "schedule": "Each twice per week.",
+      "how": [
+        "Weekly guild missions. Together with Guild Hero's Realm they give up to 2,500 Guild Activity Points per week."
+      ],
+      "tips": [],
+      "rewards": [
+        "Guild Activity Points → Treasure Tokens (guild shop)"
+      ],
+      "sources": [
+        {
+          "title": "Nerdschalk: Daily & weekly activities",
+          "url": "https://nerdschalk.com/daily-weekly-activities-in-where-winds-meet-guide/",
+          "site": "nerdschalk.com"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "'Twice a week' and the 2,500-point cap come from one source (Nerdschalk). Official notes only confirm the modes exist."
+      ]
+    },
+    {
+      "id": "guild-war",
+      "name": "Guild War",
+      "category": "guild",
+      "players": "30 vs 30",
+      "coverage": "partial",
+      "unlock": "Guild membership.",
+      "schedule": "Saturday and Sunday at 20:30 on your battlegroup's server clock: Canglang & Jiangzhu UTC+8, Yunya (EU) UTC+2, Yougu (US East) UTC-4, Linhe (US West) UTC-7. Officially does not shift for daylight saving, so your local start time can move by an hour. See Group Tools for your local time.",
+      "how": [
+        "Structured 30 vs 30 guild PvP on weekends.",
+        "Schedule set by the April 30, 2026 Arena & Guild War update. The in-game schedule panel is the authority if it changes.",
+        "2.3 changed Guild War Techniques, the Halftime Show and Guild Party (wherewindsmeet.org)."
+      ],
+      "tips": [
+        "Use the Guild War countdown on the Group Tools page so members in other time zones show up on time.",
+        "Because it doesn't follow daylight saving, US East now starts at 19:30 EST and EU at 19:30 CET (an hour earlier on the local clock than in summer)."
+      ],
+      "rewards": [
+        "Guild war currency (for guild shops)"
+      ],
+      "sources": [
+        {
+          "title": "Official: April 30 Update: Arena & Guild War Optimization Overview",
+          "url": "https://www.wherewindsmeetgame.com/news/official/PVP427.html",
+          "site": "wherewindsmeetgame.com"
+        },
+        {
+          "title": "Guild Order: Guild wars and the league season",
+          "url": "https://guildorder.com/games/where_winds_meet/wiki/guild-wars-and-the-league-season",
+          "site": "guildorder.com"
+        },
+        {
+          "title": "allthings.how: Guilds explained (30v30)",
+          "url": "https://allthings.how/where-winds-meet-guilds-how-they-work-which-type-to-pick-and-why-they-matter/",
+          "site": "allthings.how"
+        },
+        {
+          "title": "Official: Version 2.3 Patch Notes (October 29)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/1029patchnotes.html",
+          "site": "wherewindsmeetgame.com"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": [
+        "30 vs 30 is from allthings.how and guildorder.com; no official page states the size."
+      ]
+    },
+    {
+      "id": "transdust-ruins",
+      "name": "Transdust Ruins (extraction, trio)",
+      "category": "team",
+      "players": "Solo or 3-player team",
+      "coverage": "partial",
+      "added": {
+        "version": "2.2",
+        "date": "2026-09-23"
+      },
+      "unlock": "Character Lv 20 and the quest Sands of Perils. Opened Sep 23, 2026 06:00 (UTC+8).",
+      "schedule": "Solo and Trio are open all day (since 2.3). Each match runs on a timer.",
+      "how": [
+        "Modes: Solo, Trio, AI Solo and AI Trio.",
+        "Four phases: prepare, search, contest the valuable areas, extract.",
+        "Build a loadout from the Warehouse or Shop, loot the Hexi desert, deal with other players, and reach an exit before the timer.",
+        "You only keep loot you extract with. Exception: items in the small Safety Case are safe even if you die.",
+        "Random sandstorms change routes mid-run. Some exits have weight limits or tolls, slot counts vary by difficulty, and reaching an exit doesn't guarantee extraction."
+      ],
+      "tips": [
+        "Bring gear you can afford to lose until the trio knows the map.",
+        "Put your hardest-to-replace find in the Safety Case early.",
+        "Avoid pointless fights: getting out matters more than kills.",
+        "Useful tools: Dragonfinder (finds high-value treasure), Breath-Holding Talisman (shrinks how far others detect you), Wind Sense (shows nearby enemy direction)."
+      ],
+      "rewards": [
+        "Golden Treasure Tokens (sell loot) → gear, supplies, cosmetics",
+        "Floral Weave → Lingering / Resonating Melody, accessories",
+        "Season Relics → decorations and poses",
+        "Limited: Deathknell Knight mask, Wind-kov avatar"
+      ],
+      "sources": [
+        {
+          "title": "GameMarket: Where Winds Meet x Escape from Tarkov: Transdust Ruins guide",
+          "url": "https://gamemarket.gg/news/where-winds-meet/where-winds-meet-x-escape-from-tarkov-transdust-ruins-guide",
+          "site": "gamemarket.gg"
+        },
+        {
+          "title": "Topuplist: Your first Transdust Ruins run",
+          "url": "https://topuplist.com/blogs/detail/where-winds-meet-transdust-ruins-first-run-strategy",
+          "site": "topuplist.com",
+          "note": "commercial site"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Whether the Tarkov crossover rewards are limited-time is unclear.",
+        "No trio-specific tactics published."
+      ]
+    },
+    {
+      "id": "campaign-challenges",
+      "name": "Co-op Campaign Challenges",
+      "category": "team",
+      "players": "Co-op group (size not published)",
+      "coverage": "partial",
+      "unlock": "Story campaigns (e.g. Qinchuan: Sunken City Lake, Fish Among the Algae, Azure Glow).",
+      "schedule": "Re-challenges are tracked weekly for accessory unlocks.",
+      "how": [
+        "Campaign boss re-runs. Guild notes: they give martial art materials and targeted set gear (two set pieces per run).",
+        "The Qinchuan campaign re-challenges unlock accessories once each, with a Season Shop fallback."
+      ],
+      "tips": [
+        "Campaigns can also be done in Solo Mode, which some season challenges ask for."
+      ],
+      "rewards": [
+        "Martial art materials (guild notes)",
+        "Targeted set gear, two set pieces per run (guild notes)",
+        "Tranquility Pendant, Frosty Scales, Wayward Bloom (Qinchuan)"
+      ],
+      "sources": [
+        {
+          "title": "allthings.how: 1.6 weekly checklist",
+          "url": "https://allthings.how/where-winds-meet-1-6-weekly-checklist-resets-caps-and-rewards/",
+          "site": "allthings.how"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "The set-gear and materials rewards are from the guild research notes (research-notes.md); original source link was lost; no source re-read confirms them."
+      ]
+    },
+    {
+      "id": "world-bosses",
+      "name": "World bosses worth grouping for",
+      "category": "team",
+      "players": "Open world, any group",
+      "coverage": "partial",
+      "unlock": "Region access.",
+      "schedule": "Weekly first-clear rewards on some bosses.",
+      "how": [
+        "Snowplum Requiem: the first defeat each week gives the big payout (Plum Parting, Memoir Gear, Inner Way Custom Chests, Echo Jade). Repeat clears feed Sword Forge challenges.",
+        "Wandering Ark (Hexi, in the Jade Gate Pass sandstorm, NE of the pass): a mechanics fight. Break its weak points; use Moonfall in phase two.",
+        "Version 2.3 added Tidewatcher, Old Raftsman and Shuttlecock Champion in Qingzhou (SenseOS).",
+        "Version 1.7 added Gilded Lament and Cat Emperor (SenseOS, GameSpace); Game8 also lists Jingniang the Blackclad and The Lone Tyrant.",
+        "Version 2.4 adds Wayfarer Bingshen (Moonveil Knoll) and Khitan shaman Yelu Abuli, live with the Nov 13 update. See their own card."
+      ],
+      "tips": [
+        "World-boss versions don't play like the Sword Trial / Hero's Realm versions with the same name. Don't use a world-boss guide in a raid.",
+        "Since Oct 15, the Multiplayer Wooden Stake lets a team practise rotations together with a live damage panel."
+      ],
+      "rewards": [
+        "See each boss in game"
+      ],
+      "sources": [
+        {
+          "title": "allthings.how: 1.6 weekly checklist (Snowplum Requiem)",
+          "url": "https://allthings.how/where-winds-meet-1-6-weekly-checklist-resets-caps-and-rewards/",
+          "site": "allthings.how"
+        },
+        {
+          "title": "allthings.how: Wandering Ark boss fight made simple",
+          "url": "https://allthings.how/where-winds-meet-wandering-ark-boss-fight-made-simple/",
+          "site": "allthings.how"
+        },
+        {
+          "title": "Altchar: Where to find the Wandering Ark world boss",
+          "url": "https://www.altchar.com/guides/where-to-find-the-wandering-ark-world-boss-in-where-winds-meets-hexi-expansion-a5YXJ1l9SUFc",
+          "site": "altchar.com"
+        },
+        {
+          "title": "Game8: Version 1.7 summary (new world bosses)",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/602517",
+          "site": "game8.co"
+        },
+        {
+          "title": "MMOHuts: Hutuo update",
+          "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+          "site": "mmohuts.com"
+        },
+        {
+          "title": "SenseOS: World bosses by region and version",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-world-bosses/",
+          "site": "senseos.gg"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Snowplum Requiem: the source says both 'first clear of the week' and 'first defeat'. Check whether it's weekly."
+      ]
+    },
+    {
+      "id": "hutuo-bosses",
+      "name": "Hutuo world bosses: Wayfarer Bingshen & Yelu Abuli",
+      "category": "team",
+      "players": "Open world",
+      "coverage": "stub",
+      "added": {
+        "version": "2.4",
+        "date": "2026-11-13"
+      },
+      "unlock": "Unlock the Hutuo region (Lv 32, Kaifeng main chapter 'New Arrival in Kaifeng', then the quest 'Hutuo Memories').",
+      "schedule": "With the Nov 13 update (both are in the official 2.4 overview).",
+      "how": [
+        "Wayfarer Bingshen: a former Dragonbend Academy student keeping vigil at Moonveil Knoll. A timing fight: parry and deflect red cues, dodge yellow ones.",
+        "Yelu Abuli: a Khitan princess and shaman priestess with an altar on the Hutuo River. Uses shamanic rituals and shapeshifts into an eagle, a wolf and ethereal foxfire."
+      ],
+      "tips": [],
+      "rewards": [
+        "Yelu Abuli first kill: Fire Offering, Shaman Bell, Medicinal Tales x3, Inner Way Note: Custom Chest x5, Echo Jade x20",
+        "Wayfarer Bingshen first kill: Lost Wayfarer, badge 'Trial: Inches Apart', Medicinal Tales x3, Inner Way Note: Custom Chest x5, Echo Jade x20; Sword Forge Challenges"
+      ],
+      "sources": [
+        {
+          "title": "Game8: Roadmap",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/567673",
+          "site": "game8.co"
+        },
+        {
+          "title": "MMOHuts: Hutuo update",
+          "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+          "site": "mmohuts.com"
+        },
+        {
+          "title": "wherewindsmeet.org: Hutuo (Version 2.4)",
+          "url": "https://wherewindsmeet.org/guides/hutuo",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Official (Steam News): Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Mechanics are from announcement text only. Add the guild's own notes after the first kills."
+      ]
+    },
+    {
+      "id": "hutuo-river",
+      "name": "Campaign: Hutuo River",
+      "category": "event",
+      "players": "Not published",
+      "coverage": "stub",
+      "added": {
+        "version": "2.4",
+        "date": "2026-11-13"
+      },
+      "unlock": "Unlock the Hutuo region in Hidden Mountain (Lv 32 + Kaifeng main chapter 'New Arrival in Kaifeng', then the quest 'Hutuo Memories').",
+      "schedule": "Update window Nov 13, 18:00–22:59 UTC+8; playable from 23:00 after a relog.",
+      "how": [
+        "A wartime campaign built around the Battle of Zhongdu Bridge, including a fight with the Khitan general Xiao Han and his Blood-forged Super Armor.",
+        "Three new Jianghu Legacies arrive with it: The Deepest Cut, Melody Amid Reeds and Kindle the Void.",
+        "Kindle the Void needs Hidden Mountain exploration progress of 6,000."
+      ],
+      "tips": [],
+      "rewards": [
+        "First clear: Winter's Defiance",
+        "Later clears: chance at Direwolf Spine (also in the Season Shop)"
+      ],
+      "sources": [
+        {
+          "title": "Game8: Roadmap",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/567673",
+          "site": "game8.co"
+        },
+        {
+          "title": "MMOHuts: Hutuo update",
+          "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+          "site": "mmohuts.com"
+        },
+        {
+          "title": "wherewindsmeet.org: Hutuo (Version 2.4)",
+          "url": "https://wherewindsmeet.org/guides/hutuo",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Official (Steam News): Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Co-op support and player count unknown until release."
+      ]
+    },
+    {
+      "id": "horse-racing-chess",
+      "name": "Horse Racing Chess",
+      "category": "event",
+      "players": "Teams of two",
+      "coverage": "partial",
+      "added": {
+        "version": "2.4",
+        "date": "2026-11-13"
+      },
+      "unlock": "Lv 10 and the Qinghe main chapter 'Another New Wing'.",
+      "schedule": "Part of the anniversary event Blades & Bonds (Reunion on Board), from the Nov 13 update to Jan 14, 2027 04:59 UTC+8.",
+      "how": [
+        "Board-game mode: players race in teams of two, taking turns rolling dice. You're the living pieces on the board.",
+        "Playing unlocks stories along the way."
+      ],
+      "tips": [],
+      "rewards": [],
+      "sources": [
+        {
+          "title": "MMOHuts: Hutuo update",
+          "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+          "site": "mmohuts.com"
+        },
+        {
+          "title": "Game8: Roadmap",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/567673",
+          "site": "game8.co"
+        },
+        {
+          "title": "wherewindsmeet.org: Hutuo (Version 2.4)",
+          "url": "https://wherewindsmeet.org/guides/hutuo",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Official (Steam News): Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    },
+    {
+      "id": "jianghu-tactics",
+      "name": "Jianghu Tactics",
+      "category": "event",
+      "players": "Not published",
+      "coverage": "stub",
+      "added": {
+        "version": "2.4",
+        "date": "2026-11-13"
+      },
+      "unlock": "Version 2.4.",
+      "schedule": "Date TBA. Announced for 2.4, but not in the official 2.4 overview.",
+      "how": [
+        "Lineup-building mode about positioning, gear and round-by-round synergies."
+      ],
+      "tips": [],
+      "rewards": [],
+      "sources": [
+        {
+          "title": "MMOHuts: Hutuo update",
+          "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+          "site": "mmohuts.com"
+        },
+        {
+          "title": "Game8: Roadmap",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/567673",
+          "site": "game8.co"
+        },
+        {
+          "title": "wherewindsmeet.org: Hutuo (Version 2.4)",
+          "url": "https://wherewindsmeet.org/guides/hutuo",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Xbox Wire: Where Winds Meet anniversary update Hutuo",
+          "url": "https://news.xbox.com/en-us/2026/11/06/where-winds-meet-anniversary-update-hutuo/",
+          "site": "news.xbox.com"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNotes": [
+        "Not in the official Nov 12 overview; Xbox Wire names it without a date."
+      ]
+    },
+    {
+      "id": "arena",
+      "name": "Arena (1v1, 3v3, Group Strategy)",
+      "category": "pvp",
+      "players": "1v1 / 3v3 / group",
+      "coverage": "partial",
+      "unlock": "Arena menu.",
+      "schedule": "1v1: 24/7. 3v3: Mon, Wed, Fri, Sun 15:00–02:00 (next day) battlegroup time. Group Strategy: daily 12:00–02:00 battlegroup time. Season 5 first half ends Nov 26, 2026 04:59.",
+      "how": [
+        "S5 modes: 1v1, Group Strategy, 2v2, 3v3 and Perception Forest (ratings reset from S4's second half).",
+        "Split into battlegroups by server region: Canglang, Jiangzhu, Yunya, Yougu, Linhe. You're placed by login server.",
+        "Switching battlegroup: first switch per half-season is free, the second costs 100 Echo Jade, then more. Switching resets Rank Points (you keep claimed rewards).",
+        "Matchmaking pauses from 2 hours before to 1 hour after each half-season or season switch."
+      ],
+      "tips": [
+        "Group Strategy weeklies reset with the Monday reset."
+      ],
+      "rewards": [
+        "Legend in any two modes other than Perception Forest: Night's Reckoning face accessory",
+        "Legend in any four modes: Invincible Charge pose",
+        "In modes that reset mid-season, a Legend finish in either half counts",
+        "Arena Talent EXP, Arena Attunement Stone, Jade Fish, Adventure Slips"
+      ],
+      "sources": [
+        {
+          "title": "Official: April 30 Update: Arena & Guild War Optimization Overview",
+          "url": "https://www.wherewindsmeetgame.com/news/official/PVP427.html",
+          "site": "wherewindsmeetgame.com"
+        },
+        {
+          "title": "Senseos: WWM 2.3 drops (end dates)",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Official (Steam News): Version 2.3 [Friends from Afar] Update Overview (Oct 15)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    },
+    {
+      "id": "taiping-mausoleum",
+      "name": "Taiping Mausoleum (Path Trial)",
+      "category": "event",
+      "players": "Solo",
+      "coverage": "partial",
+      "unlock": "S5 Phase 1 needs Foundation Trial Chapter 10 cleared. (Wandering Paths opens at Lv 22.)",
+      "schedule": "Season 5 Phase 1 ends Nov 26, 2026 04:59 server time.",
+      "how": [
+        "Ten chapters of combat trials. Each has three star objectives (time left or HP left) plus a Divine Challenge.",
+        "Each chapter has a Mastery Boost and a Mausoleum Boost that favour certain builds.",
+        "S5: up to 60 stars of rewards; Mausoleum buffs for every path unlock in three groups: Basic, Mastery and Star.",
+        "Insight Jade cap reset to 600 for S5 (official 2.3 overview)."
+      ],
+      "tips": [
+        "Read each chapter's boosts and pick a build that matches."
+      ],
+      "rewards": [
+        "Echo Jade and Coin per chapter"
+      ],
+      "sources": [
+        {
+          "title": "Game8: Taiping Mausoleum",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/566437",
+          "site": "game8.co"
+        },
+        {
+          "title": "Senseos: WWM 2.3 drops",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Official (Steam News): Version 2.3 [Friends from Afar] Update Overview (Oct 15)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    },
+    {
+      "id": "engagement-realm",
+      "name": "Engagement Realm",
+      "category": "event",
+      "players": "—",
+      "coverage": "stub",
+      "added": {
+        "version": "2.3",
+        "date": "2026-10-15"
+      },
+      "unlock": "—",
+      "schedule": "New season with 2.3.",
+      "how": [
+        "A new season of progress rewards."
+      ],
+      "tips": [],
+      "rewards": [
+        "Includes Relaying Stone: Dustless"
+      ],
+      "sources": [
+        {
+          "title": "SenseOS: WWM 2.3 drops",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Official (Steam News): Version 2.3 [Friends from Afar] Update Overview (Oct 15)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    },
+    {
+      "id": "catch-up",
+      "name": "Catch-up progression",
+      "category": "event",
+      "players": "—",
+      "coverage": "partial",
+      "added": {
+        "version": "2.3",
+        "date": "2026-10-15"
+      },
+      "unlock": "—",
+      "schedule": "From 2.3.",
+      "how": [
+        "Gear Enhance levels 56–60 get catch-up progression.",
+        "Tier 96 options are in the catch-up chests."
+      ],
+      "tips": [
+        "Useful for bringing alts or returning guildmates up to carry-run level."
+      ],
+      "rewards": [],
+      "sources": [
+        {
+          "title": "SenseOS: WWM 2.3 drops",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Official (Steam News): Version 2.3 [Friends from Afar] Update Overview (Oct 15)",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com",
+          "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    },
+    {
+      "id": "reflection-temple",
+      "name": "Reflection Temple (closed)",
+      "category": "event",
+      "players": "—",
+      "coverage": "stub",
+      "unlock": "—",
+      "schedule": "Closed since 2.2; reopens when Jiangnan arrives.",
+      "how": [
+        "Entrance is closed until Jiangnan; stage progress is kept."
+      ],
+      "tips": [],
+      "rewards": [],
+      "sources": [
+        {
+          "title": "SenseOS: WWM 2.3 drops",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ],
+      "needsVerification": false,
+      "verifyNotes": []
+    }
+  ]
+}

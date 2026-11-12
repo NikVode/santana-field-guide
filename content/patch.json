@@ -1,0 +1,602 @@
+{
+  "version": "2.3",
+  "versionName": "Friends From Afar",
+  "releaseDate": "2026-10-15",
+  "levelCap": 100,
+  "season": {
+    "name": "Season 5: Ever Aflame",
+    "endDate": "2027-01-07",
+    "endTime": "05:00",
+    "needsVerification": true,
+    "verifyNote": "Nov 26 is officially the mid-season switch (Arena first half + Mausoleum Phase 1). The full-season end of Jan 7, 2027 comes from Game8 and GameMarket only; no official page or time has been found (05:00 assumed).",
+    "milestones": [
+      {
+        "label": "Scarlet Whispers Battle Pass ends",
+        "date": "2026-11-13 17:59 (UTC+8)",
+        "note": "moved up from Nov 14 in the Oct 29 notes"
+      },
+      {
+        "label": "Mid-Season Sprint: Arena",
+        "date": "2026-11-19 05:00 → 2026-11-26 04:59 (server time)"
+      },
+      {
+        "label": "S5 Arena first half + Taiping Mausoleum Phase 1 end",
+        "date": "2026-11-26 04:59 (server time)",
+        "at": "2026-11-26T04:59",
+        "note": "mid-season switch, not the end of S5"
+      },
+      {
+        "label": "Frostbound Edge Battle Pass ends",
+        "date": "2026-12-10 04:59 (UTC+8)",
+        "at": "2026-12-10T04:59"
+      },
+      {
+        "label": "Blades & Bonds anniversary event ends",
+        "date": "2027-01-14 04:59 (UTC+8)"
+      }
+    ]
+  },
+  "resets": {
+    "utcOffset": 8,
+    "daily": "05:00",
+    "weekly": {
+      "day": 1,
+      "time": "05:00"
+    },
+    "note": "Daily and weekly resets are 05:00 UTC+8 (weekly on Monday). Confirmed by the official patch notes, allthings.how and mein-mmo (22:00 German winter time / 4 PM EST). The Battle Pass weekly EXP cap also resets Monday 05:00 UTC+8."
+  },
+  "guildWar": {
+    "days": [
+      6,
+      0
+    ],
+    "dayLabel": "Sat & Sun",
+    "time": "20:30",
+    "note": "Official: Sat & Sun at 20:30 on each battlegroup's own clock (Apr 30, 2026 notice). The Oct 29 notes confirm it does NOT follow daylight saving, so in winter US East starts at 19:30 EST and Europe at 19:30 CET. Check the in-game schedule panel.",
+    "battlegroups": [
+      {
+        "name": "Canglang",
+        "region": "Asia (HK/MO/TW)",
+        "utcOffset": 8
+      },
+      {
+        "name": "Jiangzhu",
+        "region": "Southeast Asia",
+        "utcOffset": 8
+      },
+      {
+        "name": "Yunya",
+        "region": "Europe & Middle East",
+        "utcOffset": 2
+      },
+      {
+        "name": "Yougu",
+        "region": "US East & South America",
+        "utcOffset": -4
+      },
+      {
+        "name": "Linhe",
+        "region": "US West",
+        "utcOffset": -7
+      }
+    ]
+  },
+  "comingSoon": [
+    {
+      "title": "Version 2.4: Across Autumn Waters (Hutuo region, first anniversary)",
+      "date": "2026-11-13",
+      "details": "Non-downtime update Nov 13, 18:00–22:59 UTC+8; content is available from 23:00 after a relog (anyone who hasn't relogged is disconnected at 00:00). New region Hutuo, Campaign: Hutuo River, world bosses Wayfarer Bingshen and Yelu Abuli, Horse Racing Chess (in the Blades & Bonds event until Jan 14), three Jianghu Legacies, Frostbound Edge Battle Pass (to Dec 10). Jianghu Tactics was announced but isn't in the official 2.4 overview (date TBA). No new Sword Trial or Hero's Realm."
+    },
+    {
+      "title": "Mid-Season Sprint: Arena",
+      "date": "2026-11-19",
+      "details": "Runs Nov 19 05:00 to Nov 26 04:59 server time (official 2.4 overview)."
+    },
+    {
+      "title": "Dual Spears (new martial art)",
+      "date": "2026-11-26",
+      "details": "Arrives Nov 26 (UTC), about two weeks after Hutuo. Light and Heavy Spears; Martial Art Path Bellstrike - Bolt."
+    },
+    {
+      "title": "Arena / Mausoleum half-season switch",
+      "date": "2026-11-26",
+      "details": "Arena S5 first half and Taiping Mausoleum Phase 1 end at 04:59 server time."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "2.4",
+      "name": "Across Autumn Waters",
+      "date": "2026-11-13",
+      "summary": "Upcoming. Hutuo region, Hutuo River campaign, world bosses Wayfarer Bingshen and Yelu Abuli, Horse Racing Chess (Blades & Bonds event), Frostbound Edge Battle Pass. Dual Spears on Nov 26. Jianghu Tactics announced, date TBA."
+    },
+    {
+      "version": "2.3",
+      "name": "Friends From Afar",
+      "date": "2026-10-15",
+      "summary": "Qingzhou region (Penglai island from Oct 29). Lv 100 Sword Trial Compass & Chime and Hero's Realm Liminal Ascension (Smart Matchmaking or premade). Season 5: Ever Aflame. Tier 100 gear, Tier 100 Tuning/Attuning, Gear Enhance 66–70, Mystic Skill cap Tier 6 Stage 25, Medicine Chest Lv 18, Solo Mode Lv 18. Ready Check, AFK detection, Claim All, Multiplayer Wooden Stake. World bosses Tidewatcher, Old Raftsman, Shuttlecock Champion. Inkbound Order sect."
+    },
+    {
+      "version": "2.2",
+      "name": "Perilous Eminence",
+      "date": "2026-09-16",
+      "summary": "Hidden Mountain finale. Transdust Ruins (extraction) opened Sep 23. Guild Hero's Realm talent tracking. Reflection Temple closed until Jiangnan."
+    },
+    {
+      "version": "2.1",
+      "name": "Clouded Revelation",
+      "date": "2026-08-20",
+      "summary": "Skyward Bond Hard raised to Tier 10 (Tiers 1–5 Aug 20, 6–10 Aug 27; bosses include Guo Xin and Moongazing Maiden). Second part (2.1.3) on Sep 3 added Sword Trial Segmented Puppets and Hero's Realm Snowfall's Reckoning (Lv 96)."
+    },
+    {
+      "version": "2.0",
+      "name": "Unseen Approach",
+      "date": "2026-07-23",
+      "summary": "Hidden Mountain region, Gauntlets weapon, S4: Forge Ahead. Lv 96 content (Dragonscale Tamer, Carnival Voyage) appeared around this patch."
+    },
+    {
+      "version": "1.8",
+      "name": "Companions Make Home",
+      "date": "2026-06-25",
+      "summary": "Hero's Realm Ravening Banes (Lv 91). Fledgling Protection in matched Lv 91 Hero's Realm and Sword Trial runs. Hard and Abyss tiers for Guild Skyward Bond (official notes fix their mechanics on Jun 25 and Jul 9)."
+    },
+    {
+      "version": "1.7",
+      "name": "Imperial Palace",
+      "date": "2026-05-28",
+      "summary": "Hero's Realm Resounding Majesty (Lv 91). Guild Challenge Skyward Bond (Lv 95, up to 10 players, floors 1–5 at launch). New world bosses. Sword Trial Landscourge Thunder followed in the second part (Jun 11). Nameless Sword users no longer auto-assigned tank (May 27 notes)."
+    },
+    {
+      "version": "1.6",
+      "name": "Flow of Dreams",
+      "date": "2026-04-30",
+      "summary": "Qinchuan region, Season 3: Seek Within, Sword Trial Serpent's Fang (Lv 91). Guild War schedule moved to Sat & Sun 20:30 battlegroup time. Hero's Realm Bloodstained Sands: Supreme. Dungeon Guide button added."
+    },
+    {
+      "version": "1.5",
+      "name": "As Snow Falls",
+      "date": "2026-04-02",
+      "summary": "Hero's Realm Bloodstained Sands (Lv 86)."
+    },
+    {
+      "version": "1.4",
+      "name": "Home Afar",
+      "date": "2026-03-06",
+      "summary": "Hexi expansion. Hero's Realm Yama's Seal (Mar 6) and its Supreme + Sword Trial Abyssal Lament (Mar 20). Wandering Ark world boss."
+    },
+    {
+      "version": "1.3",
+      "name": "Spring's Bliss",
+      "date": "2026-02-06",
+      "summary": "Sword Trial Drunken Verse (Lv 81), Hero's Realm Sorrow of Mortalbound - Supreme. Season 2: Rewind."
+    },
+    {
+      "version": "1.2",
+      "name": "Live to Game",
+      "date": "2026-01-09",
+      "summary": "Boss Dummy in the Sword Trial training ground (Timed, Fixed-HP, Free). Fledgling status for new players. Hero's Realm Sorrow of Mortalbound (Lv 71) live by Jan 22."
+    }
+  ],
+  "checklist": {
+    "daily": [
+      {
+        "id": "energy",
+        "label": "Spend Energy (Sword Trial claims / campaigns)",
+        "note": "Sword Trial claims cost 60 Energy each. Energy cap is 500 or 550 depending on the source; check in game"
+      },
+      {
+        "id": "stake",
+        "label": "Multiplayer Wooden Stake before a new raid (optional)",
+        "note": "Leader pulls the team in; check team and individual damage"
+      },
+      {
+        "id": "sect",
+        "label": "Sect Jianghu errands",
+        "note": "Up to 6 per day"
+      },
+      {
+        "id": "bp",
+        "label": "Battle Pass dailies"
+      },
+      {
+        "id": "bounty",
+        "label": "Bounties / Vendettas",
+        "note": "Coins"
+      },
+      {
+        "id": "arena",
+        "label": "Arena matches (optional)",
+        "note": "Group Strategy 12:00–02:00 battlegroup time"
+      }
+    ],
+    "weekly": [
+      {
+        "id": "mausoleum",
+        "label": "Taiping Mausoleum stars (S5 Phase 1, until Nov 26)",
+        "note": "Up to 60 stars of rewards"
+      },
+      {
+        "id": "hr-100",
+        "label": "Hero's Realm weekly claim: Liminal Ascension (Lv 100)",
+        "note": "Weekly reward limit (each claim costs 60 Stamina). Check whether tiers share a claim"
+      },
+      {
+        "id": "st-100",
+        "label": "Sword Trial: Compass & Chime chests",
+        "note": "Chime / Compass chests via Chivalry Vouchers"
+      },
+      {
+        "id": "guild-hr",
+        "label": "Guild Hero's Realm (once a week)"
+      },
+      {
+        "id": "breaking-army",
+        "label": "Breaking Army (x2)"
+      },
+      {
+        "id": "showdown",
+        "label": "Guild Showdown (x2)"
+      },
+      {
+        "id": "skyward",
+        "label": "Skyward Bond: push the guild's floor",
+        "note": "Guild Giftbox next week depends on the highest floor cleared"
+      },
+      {
+        "id": "guild-war",
+        "label": "Guild War (Sat & Sun 20:30 battlegroup time)"
+      },
+      {
+        "id": "melody",
+        "label": "Lingering Melody exchange (2 per week)"
+      },
+      {
+        "id": "season-shop",
+        "label": "Season Shop restock"
+      },
+      {
+        "id": "bp-cap",
+        "label": "Battle Pass weekly EXP cap",
+        "note": "Resets Monday 05:00 UTC+8"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "Game8: List of Events and Seasons",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/568663",
+      "site": "game8.co"
+    },
+    {
+      "title": "Game8: Roadmap",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/567673",
+      "site": "game8.co"
+    },
+    {
+      "title": "Senseos: WWM 2.3 Qingzhou, New Path and End Dates",
+      "url": "https://senseos.gg/guides/where-winds-meet/wwm-version-2-3-drops/",
+      "site": "senseos.gg"
+    },
+    {
+      "title": "Patchbot: Version 2.3 Friends From Afar update overview",
+      "url": "https://patchbot.io/games/where-winds-meet/articles/1787-version-23-friends-from-afar-update-overview",
+      "site": "patchbot.io"
+    },
+    {
+      "title": "Official: April 30 Update: Arena & Guild War Optimization Overview",
+      "url": "https://www.wherewindsmeetgame.com/news/official/PVP427.html",
+      "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "Official: Version 2.0 Patch Notes (July 23, 2026)",
+      "url": "https://www.wherewindsmeetgame.com/news/official/723update.html",
+      "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "MMOHuts: Hutuo Region and Anniversary Update on November 13",
+      "url": "https://mmohuts.com/news/where-winds-meet-adds-hutuo-region-and-anniversary-update-on-november-13",
+      "site": "mmohuts.com"
+    },
+    {
+      "title": "Game8: Version 1.7 The Imperial Palace summary",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/602517",
+      "site": "game8.co"
+    },
+    {
+      "title": "allthings.how: 1.6 weekly checklist, resets and caps",
+      "url": "https://allthings.how/where-winds-meet-1-6-weekly-checklist-resets-caps-and-rewards/",
+      "site": "allthings.how"
+    },
+    {
+      "title": "Nerdschalk: Daily & weekly activities",
+      "url": "https://nerdschalk.com/daily-weekly-activities-in-where-winds-meet-guide/",
+      "site": "nerdschalk.com"
+    },
+    {
+      "title": "mein-mmo: Max level, level cap and daily reset",
+      "url": "https://mein-mmo.de/en/where-winds-meet-maximaler-level-level-cap-erhoehen-daily-reset,1537401/",
+      "site": "mein-mmo.de"
+    },
+    {
+      "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+      "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+      "site": "senseos.gg"
+    },
+    {
+      "title": "SenseOS: World bosses by region and version",
+      "url": "https://senseos.gg/guides/where-winds-meet/wwm-world-bosses/",
+      "site": "senseos.gg"
+    },
+    {
+      "title": "wherewindsmeet.org: Patch notes history",
+      "url": "https://wherewindsmeet.org/guides/patch-notes",
+      "site": "wherewindsmeet.org"
+    },
+    {
+      "title": "wherewindsmeet.org: Hutuo (Version 2.4)",
+      "url": "https://wherewindsmeet.org/guides/hutuo",
+      "site": "wherewindsmeet.org"
+    },
+    {
+      "title": "Official: Version 2.3 Patch Notes (October 29)",
+      "url": "https://www.wherewindsmeetgame.com/news/official/1029patchnotes.html",
+      "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "Official (Steam): Version 2.3 Friends from Afar Update Overview",
+      "url": "https://store.steampowered.com/news/app/3564740/view/667253496651710956",
+      "site": "store.steampowered.com",
+      "note": "listed in guild notes; page needs JavaScript, so its body couldn't be read"
+    },
+    {
+      "title": "Game8: Endgame guide",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/569373",
+      "site": "game8.co"
+    },
+    {
+      "title": "Official X: Hutuo launch window (Nov 11)",
+      "url": "https://x.com/WhereWindsMeet_/status/2120532003351048535",
+      "site": "x.com"
+    },
+    {
+      "title": "Official: Version 2.4 Dev Letter (Nov 9)",
+      "url": "https://www.wherewindsmeetgame.com/news/official/1109devletter.html",
+      "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "PlayStation Blog: Hutuo battlefield narrative arc",
+      "url": "https://blog.playstation.com/2026/10/27/where-winds-meets-climactic-hutuo-battlefield-narrative-arc-revealed-out-nov-13/",
+      "site": "blog.playstation.com"
+    },
+    {
+      "title": "Official (Steam News): Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+      "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+      "site": "store.steampowered.com",
+      "note": "read via the public Steam News API; overview posts are images, read with OCR"
+    },
+    {
+      "title": "Official (Steam News): Version 2.3 [Friends from Afar] Update Overview (Oct 15)",
+      "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+      "site": "store.steampowered.com",
+      "note": "read via the public Steam News API; overview posts are images, read with OCR"
+    },
+    {
+      "title": "allthings.how: Daily reset time and level cap schedule",
+      "url": "https://allthings.how/where-winds-meet-daily-reset-time-and-level-cap-schedule-explained/",
+      "site": "allthings.how"
+    },
+    {
+      "title": "Xbox Wire: Where Winds Meet anniversary update Hutuo",
+      "url": "https://news.xbox.com/en-us/2026/11/06/where-winds-meet-anniversary-update-hutuo/",
+      "site": "news.xbox.com"
+    },
+    {
+      "title": "Game8: Version 2.1 Clouded Revelation summary",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/616291",
+      "site": "game8.co"
+    },
+    {
+      "title": "Official: 1.8 patch notes (Jun 25 / Jul 9 fixes, Skyward Bond Hard & Abyss)",
+      "url": "https://wherewindsmeetgame.com/news/official/625update.html",
+      "site": "wherewindsmeetgame.com"
+    }
+  ],
+  "groupFeatures": [
+    {
+      "name": "Ready Check",
+      "what": "The leader checks that everyone is ready, from the team panel.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ]
+    },
+    {
+      "name": "AFK detection & penalty",
+      "what": "Applies to matchmade teams only, not premades (for now).",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ]
+    },
+    {
+      "name": "Quick Request / Adjust Tank Role",
+      "what": "Your role request goes to team chat and the leader confirms it.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ]
+    },
+    {
+      "name": "Nameless Sword isn't auto-tank",
+      "what": "Nameless Sword users are no longer assigned tank in matchmaking; certain melee setups can choose tank.",
+      "added": "1.7 (May 27 notes)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        }
+      ]
+    },
+    {
+      "name": "Claim All Rewards (Hero's Realm)",
+      "what": "One tap claims unclaimed boss rewards. Appearance chests are excluded.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ]
+    },
+    {
+      "name": "Multiplayer Wooden Stake",
+      "what": "The leader starts it and pulls the team in; a live panel shows team and individual damage. Good for checking rotations before a run.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "SenseOS: World bosses by region and version",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-world-bosses/",
+          "site": "senseos.gg"
+        }
+      ]
+    },
+    {
+      "name": "Boss Dummy",
+      "what": "In the Sword Trial training ground, with Timed, Fixed-HP and Free versions. No Energy cost.",
+      "added": "1.2 (Jan 9, 2026)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Game8: Training Dummy location and features",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/578137",
+          "site": "game8.co"
+        },
+        {
+          "title": "Nerdschalk: How to use the Training Dummy",
+          "url": "https://nerdschalk.com/how-to-use-training-dummy-in-where-winds-meet/",
+          "site": "nerdschalk.com"
+        }
+      ]
+    },
+    {
+      "name": "Dungeon Guide button",
+      "what": "On the Sword Trial and Hero's Realm screens; opens the game's own walkthrough with text and pictures for that encounter.",
+      "added": "1.6 (Apr 30)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Where Winds Meet Handbook: Sword Trial",
+          "url": "https://wherewindsmeethandbook.com/multiplayer/sword-trial/",
+          "site": "wherewindsmeethandbook.com"
+        },
+        {
+          "title": "Official: April 30 Optimizations and Fixes",
+          "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
+          "site": "store.steampowered.com"
+        }
+      ]
+    },
+    {
+      "name": "Boss shield %",
+      "what": "Some bosses now show how much shield is left.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNote": "Single source (SenseOS)."
+    },
+    {
+      "name": "VFX & umbrella transparency",
+      "what": "Smart Martial Art VFX Transparency, Umbrella Semi-Transparency (Vernal / Soulshade Umbrella), and hiding non-team effects when too many pile up.",
+      "added": "2.3 (Oct 15)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "wherewindsmeet.org: Patch notes history",
+          "url": "https://wherewindsmeet.org/guides/patch-notes",
+          "site": "wherewindsmeet.org"
+        }
+      ]
+    },
+    {
+      "name": "Fledgling Protection",
+      "what": "In matched Lv 91 Hero's Realm and Sword Trial runs, Fledgling players get extra revives; teammates matched with them get extra revives and Never-Delay Points.",
+      "added": "1.8 (Jun 25 notes)",
+      "sources": [
+        {
+          "title": "SenseOS: Sword Trials and Hero's Realms in level order, plus team rules",
+          "url": "https://senseos.gg/guides/where-winds-meet/wwm-sword-trials-and-heros-realms/",
+          "site": "senseos.gg"
+        },
+        {
+          "title": "Official: 1.8 patch notes (Jun 25)",
+          "url": "https://wherewindsmeetgame.com/news/official/625update.html",
+          "site": "wherewindsmeetgame.com"
+        }
+      ],
+      "needsVerification": true,
+      "verifyNote": "Official notes confirm it; exact revive counts are unpublished."
+    }
+  ]
+}
