@@ -1,7 +1,7 @@
 {
-  "version": "2.3",
-  "versionName": "Friends From Afar",
-  "releaseDate": "2026-10-15",
+  "version": "2.4",
+  "versionName": "Across Autumn Waters",
+  "releaseDate": "2026-11-13",
   "levelCap": 100,
   "season": {
     "name": "Season 5: Ever Aflame",
@@ -11,13 +11,9 @@
     "verifyNote": "Nov 26 is officially the mid-season switch (Arena first half + Mausoleum Phase 1). The full-season end of Jan 7, 2027 comes from Game8 and GameMarket only; no official page or time has been found (05:00 assumed).",
     "milestones": [
       {
-        "label": "Scarlet Whispers Battle Pass ends",
-        "date": "2026-11-13 17:59 (UTC+8)",
-        "note": "moved up from Nov 14 in the Oct 29 notes"
-      },
-      {
         "label": "Mid-Season Sprint: Arena",
-        "date": "2026-11-19 05:00 → 2026-11-26 04:59 (server time)"
+        "date": "2026-11-19 05:00 → 2026-11-26 04:59 (server time)",
+        "note": "Lv 20+. Daily and weekly event quests (Arena Talent EXP, Arena Attunement Stone)"
       },
       {
         "label": "S5 Arena first half + Taiping Mausoleum Phase 1 end",
@@ -26,13 +22,26 @@
         "note": "mid-season switch, not the end of S5"
       },
       {
+        "label": "Spectral Scroll event ends",
+        "date": "2026-11-28 04:59 (UTC+8)",
+        "at": "2026-11-28T04:59"
+      },
+      {
         "label": "Frostbound Edge Battle Pass ends",
         "date": "2026-12-10 04:59 (UTC+8)",
         "at": "2026-12-10T04:59"
       },
       {
+        "label": "Enduring Flame & Swallow's Gifts events end",
+        "date": "2026-12-10 04:59 (UTC+8)",
+        "at": "2026-12-10T04:59",
+        "note": "same time as the Frostbound Edge Battle Pass"
+      },
+      {
         "label": "Blades & Bonds anniversary event ends",
-        "date": "2027-01-14 04:59 (UTC+8)"
+        "date": "2027-01-14 04:59 (UTC+8)",
+        "at": "2027-01-14T04:59",
+        "note": "Horse Racing Chess lives in this event"
       }
     ]
   },
@@ -83,11 +92,6 @@
   },
   "comingSoon": [
     {
-      "title": "Version 2.4: Across Autumn Waters (Hutuo region, first anniversary)",
-      "date": "2026-11-13",
-      "details": "Non-downtime update Nov 13, 18:00–22:59 UTC+8; content is available from 23:00 after a relog (anyone who hasn't relogged is disconnected at 00:00). New region Hutuo, Campaign: Hutuo River, world bosses Wayfarer Bingshen and Yelu Abuli, Horse Racing Chess (in the Blades & Bonds event until Jan 14), three Jianghu Legacies, Frostbound Edge Battle Pass (to Dec 10). Jianghu Tactics was announced but isn't in the official 2.4 overview (date TBA). No new Sword Trial or Hero's Realm."
-    },
-    {
       "title": "Mid-Season Sprint: Arena",
       "date": "2026-11-19",
       "details": "Runs Nov 19 05:00 to Nov 26 04:59 server time (official 2.4 overview)."
@@ -95,7 +99,7 @@
     {
       "title": "Dual Spears (new martial art)",
       "date": "2026-11-26",
-      "details": "Arrives Nov 26 (UTC), about two weeks after Hutuo. Light and Heavy Spears; Martial Art Path Bellstrike - Bolt."
+      "details": "Arrives Nov 26 (UTC), two weeks after 2.4 (confirmed in Game8's 2.4 write-up). Light and Heavy Spears; Martial Art Path Bellstrike - Bolt."
     },
     {
       "title": "Arena / Mausoleum half-season switch",
@@ -108,7 +112,7 @@
       "version": "2.4",
       "name": "Across Autumn Waters",
       "date": "2026-11-13",
-      "summary": "Upcoming. Hutuo region, Hutuo River campaign, world bosses Wayfarer Bingshen and Yelu Abuli, Horse Racing Chess (Blades & Bonds event), Frostbound Edge Battle Pass. Dual Spears on Nov 26. Jianghu Tactics announced, date TBA."
+      "summary": "Live Nov 13 (live maintenance 18:01, content after 23:00 on relog, unpatched players kicked at 00:00). Hutuo region (Lv 32 + 'New Arrival in Kaifeng' + 'Hutuo Memories'), Campaign: Hutuo River (boss Xiao Han), world bosses Wayfarer Bingshen and Yelu Abuli, three Jianghu Legacies, Omni-Weapon Skills Sky Tether (Gauntlets) and Silken Step (Waist Drum), Mirage Boat upgrade to Radiance Boat. First anniversary: free 2,580 outfit (Windtail Express), Blades & Bonds with Horse Racing Chess (to Jan 14), Frostbound Edge Battle Pass (to Dec 10). Path balance: Reset Tuning / Retuning Correction cooldown 5 → 3 days, free switching between sets a gear piece has used, 7-day recovery of fully tuned Legendary gear used as Modulating material, Battle Build now saves Attuning / Mystic Enlightenment / Divinecraft, Lv 96–99 catch-up at 400% EXP, Training Terrace practice for 3v3 / Perception Forest / Group Strategy, and many PvE and Arena path changes. No new Sword Trial or Hero's Realm. Dual Spears Nov 26; Jianghu Tactics still TBA."
     },
     {
       "version": "2.3",
@@ -399,6 +403,27 @@
       "title": "Official: 1.8 patch notes (Jun 25 / Jul 9 fixes, Skyward Bond Hard & Abyss)",
       "url": "https://wherewindsmeetgame.com/news/official/625update.html",
       "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "Official: Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+      "url": "https://www.wherewindsmeetgame.com/news/official/AcrossAutumnWaters.html",
+      "site": "wherewindsmeetgame.com",
+      "note": "overview is posted as images"
+    },
+    {
+      "title": "Official: Version 2.4 Path Balance Adjustment Announcement (Nov 13)",
+      "url": "https://www.wherewindsmeetgame.com/news/official/1113PathBalance.html",
+      "site": "wherewindsmeetgame.com"
+    },
+    {
+      "title": "Game8: Version 2.4 Across Autumn Waters update",
+      "url": "https://game8.co/games/Where-Winds-Meet/archives/638212",
+      "site": "game8.co"
+    },
+    {
+      "title": "Twisted Voxel: Where Winds Meet update 2.4 patch notes",
+      "url": "https://twistedvoxel.com/where-winds-meet-update-2-4-patch-notes/",
+      "site": "twistedvoxel.com"
     }
   ],
   "groupFeatures": [

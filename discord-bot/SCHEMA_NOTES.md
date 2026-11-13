@@ -57,7 +57,7 @@ Gaps the bot handles gracefully instead of inventing data:
 | `season.milestones[]` **without** `at` | Shows the `date` text only; **no countdown** | Parses the leading date and time of `date` with the same `parseServerDate`. If `date` is a range (`A → B`), the item shows "starts" before A and "ends" until B. |
 | `comingSoon[]` `{ title, date, details }` | Shows the date as a badge | Listed with the date only (no exact time is in the data). It drops off after that server day ends. An entry that repeats a milestone on the same server date is hidden (see below). |
 
-Milestones without `at` on 2026-11-13: "Scarlet Whispers Battle Pass ends" (already past), "Mid-Season Sprint: Arena" (a range) and "Blades & Bonds anniversary event ends" (2027-01-14 04:59). **Suggestion:** give them an `at` so the site counts them down too. The bot needs no change if you do.
+Milestones without `at` since the 2.4 update (2026-11-13): only "Mid-Season Sprint: Arena", because it's a range. The Scarlet Whispers milestone was removed after it ended, and "Blades & Bonds anniversary event ends" now has an `at`.
 
 Duplicate rule: a `comingSoon` entry is hidden from `/times` when a milestone falls on the same server date and the two share a word of 4 or more letters ("arena", "mausoleum"…). Today this hides "Mid-Season Sprint: Arena" and "Arena / Mausoleum half-season switch", because both repeat a milestone.
 

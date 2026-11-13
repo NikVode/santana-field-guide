@@ -172,7 +172,8 @@
       ],
       "tips": [
         "Use the Guild War countdown on the Group Tools page so members in other time zones show up on time.",
-        "Because it doesn't follow daylight saving, US East now starts at 19:30 EST and EU at 19:30 CET (an hour earlier on the local clock than in summer)."
+        "Because it doesn't follow daylight saving, US East now starts at 19:30 EST and EU at 19:30 CET (an hour earlier on the local clock than in summer).",
+        "2.4 Guild War EX changes: Panacea Fan EX heals longer and more (120–139% total) but healing from 3 sources in 60 s is cut 60% (4+ sources: 80%), so spread healers across targets. Also changed: Heavenquaker Spear, Inkwell Fan, Stormbreaker Spear, Everspring Umbrella and Museflow Waist Drum EX."
       ],
       "rewards": [
         "Guild war currency (for guild shops)"
@@ -202,6 +203,11 @@
           "title": "wherewindsmeet.org: Patch notes history",
           "url": "https://wherewindsmeet.org/guides/patch-notes",
           "site": "wherewindsmeet.org"
+        },
+        {
+          "title": "Official: Version 2.4 Path Balance Adjustment Announcement (Nov 13)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/1113PathBalance.html",
+          "site": "wherewindsmeetgame.com"
         }
       ],
       "needsVerification": false,
@@ -298,7 +304,7 @@
         "Wandering Ark (Hexi, in the Jade Gate Pass sandstorm, NE of the pass): a mechanics fight. Break its weak points; use Moonfall in phase two.",
         "Version 2.3 added Tidewatcher, Old Raftsman and Shuttlecock Champion in Qingzhou (SenseOS).",
         "Version 1.7 added Gilded Lament and Cat Emperor (SenseOS, GameSpace); Game8 also lists Jingniang the Blackclad and The Lone Tyrant.",
-        "Version 2.4 adds Wayfarer Bingshen (Moonveil Knoll) and Khitan shaman Yelu Abuli, live with the Nov 13 update. See their own card."
+        "Version 2.4 adds Wayfarer Bingshen (Moonveil Knoll) and Khitan shaman Yelu Abuli, added in 2.4 (Nov 13). See their own card."
       ],
       "tips": [
         "World-boss versions don't play like the Sword Trial / Hero's Realm versions with the same name. Don't use a world-boss guide in a raid.",
@@ -355,15 +361,15 @@
         "date": "2026-11-13"
       },
       "unlock": "Unlock the Hutuo region (Lv 32, Kaifeng main chapter 'New Arrival in Kaifeng', then the quest 'Hutuo Memories').",
-      "schedule": "With the Nov 13 update (both are in the official 2.4 overview).",
+      "schedule": "Live since the Nov 13 update (official 2.4 overview).",
       "how": [
-        "Wayfarer Bingshen: a former Dragonbend Academy student keeping vigil at Moonveil Knoll. A timing fight: parry and deflect red cues, dodge yellow ones.",
+        "Wayfarer Bingshen: a former Dragonbend Academy student keeping vigil at Moonveil Knoll, in the north of Hutuo. A timing fight: parry and deflect red cues, dodge yellow ones.",
         "Yelu Abuli: a Khitan princess and shaman priestess with an altar on the Hutuo River. Uses shamanic rituals and shapeshifts into an eagle, a wolf and ethereal foxfire."
       ],
       "tips": [],
       "rewards": [
         "Yelu Abuli first kill: Fire Offering, Shaman Bell, Medicinal Tales x3, Inner Way Note: Custom Chest x5, Echo Jade x20",
-        "Wayfarer Bingshen first kill: Lost Wayfarer, badge 'Trial: Inches Apart', Medicinal Tales x3, Inner Way Note: Custom Chest x5, Echo Jade x20; Sword Forge Challenges"
+        "Wayfarer Bingshen first kill: Lost Wayfarer, Medicinal Tales x3, Inner Way Note: Custom Chest x5, Echo Jade x20. Sword Forge Challenges (Trial menu) add the avatar 'Wayfarer Bingshen' and badge 'Trial: Inches Apart'"
       ],
       "sources": [
         {
@@ -386,11 +392,22 @@
           "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
           "site": "store.steampowered.com",
           "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        },
+        {
+          "title": "Official: Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/AcrossAutumnWaters.html",
+          "site": "wherewindsmeetgame.com",
+          "note": "overview is posted as images"
+        },
+        {
+          "title": "Game8: Version 2.4 Across Autumn Waters update",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/638212",
+          "site": "game8.co"
         }
       ],
       "needsVerification": true,
       "verifyNotes": [
-        "Mechanics are from announcement text only. Add the guild's own notes after the first kills."
+        "Mechanics are from announcement text only. Add the guild's own notes after the first kills. Check whether first-kill rewards are once only or weekly."
       ]
     },
     {
@@ -404,9 +421,9 @@
         "date": "2026-11-13"
       },
       "unlock": "Unlock the Hutuo region in Hidden Mountain (Lv 32 + Kaifeng main chapter 'New Arrival in Kaifeng', then the quest 'Hutuo Memories').",
-      "schedule": "Update window Nov 13, 18:00–22:59 UTC+8; playable from 23:00 after a relog.",
+      "schedule": "Live since the Nov 13 update.",
       "how": [
-        "A wartime campaign built around the Battle of Zhongdu Bridge, including a fight with the Khitan general Xiao Han and his Blood-forged Super Armor.",
+        "A wartime campaign built around the Battle of Zhongdu Bridge, ending in a fight with the Khitan general Xiao Han (heavy attacks, Blood-forged Super Armor).",
         "Three new Jianghu Legacies arrive with it: The Deepest Cut, Melody Amid Reeds and Kindle the Void.",
         "Kindle the Void needs Hidden Mountain exploration progress of 6,000."
       ],
@@ -436,11 +453,27 @@
           "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
           "site": "store.steampowered.com",
           "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        },
+        {
+          "title": "Official: Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/AcrossAutumnWaters.html",
+          "site": "wherewindsmeetgame.com",
+          "note": "overview is posted as images"
+        },
+        {
+          "title": "Game8: Version 2.4 Across Autumn Waters update",
+          "url": "https://game8.co/games/Where-Winds-Meet/archives/638212",
+          "site": "game8.co"
+        },
+        {
+          "title": "Twisted Voxel: Where Winds Meet update 2.4 patch notes",
+          "url": "https://twistedvoxel.com/where-winds-meet-update-2-4-patch-notes/",
+          "site": "twistedvoxel.com"
         }
       ],
       "needsVerification": true,
       "verifyNotes": [
-        "Co-op support and player count unknown until release."
+        "Co-op support and player count aren't in the 2.4 overview. Check in game."
       ]
     },
     {
@@ -454,10 +487,10 @@
         "date": "2026-11-13"
       },
       "unlock": "Lv 10 and the Qinghe main chapter 'Another New Wing'.",
-      "schedule": "Part of the anniversary event Blades & Bonds (Reunion on Board), from the Nov 13 update to Jan 14, 2027 04:59 UTC+8.",
+      "schedule": "Part of the anniversary event Blades & Bonds, from the Nov 13 update to Jan 14, 2027 04:59 UTC+8 (official 2.4 overview).",
       "how": [
         "Board-game mode: players race in teams of two, taking turns rolling dice. You're the living pieces on the board.",
-        "Playing unlocks stories along the way."
+        "Playing unlocks the Tales on Tiles stories."
       ],
       "tips": [],
       "rewards": [],
@@ -482,6 +515,17 @@
           "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
           "site": "store.steampowered.com",
           "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        },
+        {
+          "title": "Official: Version 2.4 [Across Autumn Waters] Update Overview (Nov 12)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/AcrossAutumnWaters.html",
+          "site": "wherewindsmeetgame.com",
+          "note": "overview is posted as images"
+        },
+        {
+          "title": "Twisted Voxel: Where Winds Meet update 2.4 patch notes",
+          "url": "https://twistedvoxel.com/where-winds-meet-update-2-4-patch-notes/",
+          "site": "twistedvoxel.com"
         }
       ],
       "needsVerification": false,
@@ -498,7 +542,7 @@
         "date": "2026-11-13"
       },
       "unlock": "Version 2.4.",
-      "schedule": "Date TBA. Announced for 2.4, but not in the official 2.4 overview.",
+      "schedule": "Date TBA. Announced for 2.4, but not in the official overview or the launch write-ups on Nov 13.",
       "how": [
         "Lineup-building mode about positioning, gear and round-by-round synergies."
       ],
@@ -528,7 +572,7 @@
       ],
       "needsVerification": true,
       "verifyNotes": [
-        "Not in the official Nov 12 overview; Xbox Wire names it without a date."
+        "Still not in the official 2.4 overview at launch (Nov 13); Xbox Wire names it without a date."
       ]
     },
     {
@@ -546,7 +590,8 @@
         "Matchmaking pauses from 2 hours before to 1 hour after each half-season or season switch."
       ],
       "tips": [
-        "Group Strategy weeklies reset with the Monday reset."
+        "Group Strategy weeklies reset with the Monday reset.",
+        "2.4 (Nov 13): lower deflection caps on many skills (e.g. Third Theorem 4 → 3, Fleeting Trace 9 → 5, Greed Bane 6 → 3), better first-light-attack tracking, backward dodge rebalanced, and the Training Terrace now lets you practise 3v3, Perception Forest and Group Strategy. Re-check your Arena rotations."
       ],
       "rewards": [
         "Legend in any two modes other than Perception Forest: Night's Reckoning face accessory",
@@ -570,6 +615,11 @@
           "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
           "site": "store.steampowered.com",
           "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        },
+        {
+          "title": "Official: Version 2.4 Path Balance Adjustment Announcement (Nov 13)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/1113PathBalance.html",
+          "site": "wherewindsmeetgame.com"
         }
       ],
       "needsVerification": false,
@@ -662,10 +712,11 @@
         "date": "2026-10-15"
       },
       "unlock": "—",
-      "schedule": "From 2.3.",
+      "schedule": "From 2.3; extended in 2.4.",
       "how": [
         "Gear Enhance levels 56–60 get catch-up progression.",
-        "Tier 96 options are in the catch-up chests."
+        "Tier 96 options are in the catch-up chests.",
+        "2.4: characters at Lv 96–99 keep catch-up status with 400% character EXP."
       ],
       "tips": [
         "Useful for bringing alts or returning guildmates up to carry-run level."
@@ -682,6 +733,11 @@
           "url": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=3564740",
           "site": "store.steampowered.com",
           "note": "read via the public Steam News API; overview posts are images, read with OCR"
+        },
+        {
+          "title": "Official: Version 2.4 Path Balance Adjustment Announcement (Nov 13)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/1113PathBalance.html",
+          "site": "wherewindsmeetgame.com"
         }
       ],
       "needsVerification": false,
