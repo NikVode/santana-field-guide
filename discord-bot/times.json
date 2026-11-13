@@ -1,0 +1,11 @@
+{
+  "_readme": "Recurring rules the site's patch.json doesn't already have. Daily reset, weekly reset and Guild War come from patch.json (resets, guildWar), so they are NOT repeated here. A rule is either {\"sameAs\": \"daily\"|\"weekly\"} (follows the site's reset) or {\"weekday\": 0-6 (0=Sun) or null for daily, \"time\": \"HH:MM\", \"utcOffset\": 8}. Every rule needs a source. See README > How to update.",
+  "rules": [
+    {
+      "id": "bp-exp-cap",
+      "label": "Battle Pass weekly EXP cap",
+      "sameAs": "weekly",
+      "source": "Site patch.json resets.note: 'The Battle Pass weekly EXP cap also resets Monday 05:00 UTC+8' (and checklist bp-cap note)."
+    }
+  ]
+}
