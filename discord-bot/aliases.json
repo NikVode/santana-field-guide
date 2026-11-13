@@ -1,0 +1,31 @@
+{
+  "_readme": "Nicknames -> site ids. Target is \"<encounterId>\" or \"<encounterId>/<bossId>\" (ids from content/encounters.json on the site). A nickname can point to a list. Level shortcuts like \"lv100 hr\" or \"st96\" are generated from the data automatically, so don't add those here.",
+  "aliases": {
+    "veiled lady": "liminal-ascension/bai-chuyu",
+    "bai": "liminal-ascension/bai-chuyu",
+    "swordmaster": "compass-chime/lodestar",
+    "bells": "compass-chime/bell-toller",
+    "scorpion": "segmented-puppets/ironheart-centipede",
+    "centipede": "segmented-puppets/ironheart-centipede",
+    "puppets": [
+      "segmented-puppets",
+      "segmented-puppets/ci-and-cuo"
+    ],
+    "ci cuo": "segmented-puppets/ci-and-cuo",
+    "horse": "dragonscale-tamer/horse-tamer",
+    "snake": "serpents-fang/snake-doctor",
+    "wolf": "serpents-fang/wolf-maiden",
+    "thunder": "landscourge-thunder",
+    "zhenge": "snowfalls-reckoning/zheng-e",
+    "ark": "carnival-voyage/wandering-ark",
+    "lion": [
+      "ravening-banes/sentinel-howlion",
+      "sorrow-of-mortalbound/twin-lions"
+    ],
+    "deer": "resounding-majesty/everdeer",
+    "sands": "bloodstained-sands",
+    "bss": "bloodstained-sands",
+    "yama": "yamas-seal",
+    "som": "sorrow-of-mortalbound"
+  }
+}

@@ -1,0 +1,8 @@
+name = "santana-discord-bot"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# Public, non-secret settings. Secrets (DISCORD_PUBLIC_KEY, DISCORD_APPLICATION_ID)
+# are set with `npx wrangler secret put <NAME>` and never live in this file.
+[vars]
+SITE_URL = "https://nikvode.github.io/santana-field-guide/"

@@ -1,0 +1,23 @@
+{
+  "name": "santana-discord-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slash-command Discord app for the Santana guild. Reads the live Santana Field Guide JSON.",
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "register": "tsx scripts/register.ts",
+    "samples": "tsx scripts/samples.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "@types/node": "^20.19.43",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5",
+    "wrangler": "^3.87.0"
+  }
+}
