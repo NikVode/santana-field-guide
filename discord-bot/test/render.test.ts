@@ -29,16 +29,24 @@ describe("every encounter and boss in the live data renders within Discord limit
       }
     }
   });
-  it("/raid, /roles, /talents for every encounter and boss", () => {
+  it("/raid and /checklist for every encounter and boss", () => {
     for (const e of data.encounters) {
       const raid = runCommand("raid", { name: e.id }, data);
       check(`/raid ${e.id}`, raid);
       expect(raid.ephemeral).toBe(false);
       expect(raid.messages.flatMap((m) => m.embeds || []).length).toBe(2 + e.bosses.length);
       for (const key of [e.id, ...e.bosses.map((b) => `${e.id}/${b.id}`)]) {
-        check(`/roles ${key}`, runCommand("roles", { name: key }, data));
-        check(`/talents ${key}`, runCommand("talents", { name: key }, data));
+        check(`/checklist ${key}`, runCommand("checklist", { name: key }, data));
       }
+    }
+  });
+  it("shows no source citations or verification notes anywhere", () => {
+    const shown = JSON.stringify([
+      ...data.encounters.flatMap((e) => [runCommand("raid", { name: e.id }, data), runCommand("checklist", { name: e.id }, data)]),
+      runCommand("times", {}, data),
+    ]);
+    for (const bad of ["⚠", "Game8", "Where Guilds Meet", "allthings", "SenseOS", "Handbook", "verif", "Source:", "Not published", "assumed"]) {
+      expect(shown.includes(bad), `found "${bad}"`).toBe(false);
     }
   });
   it("/boss is private by default and public with share:true", () => {

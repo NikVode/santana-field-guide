@@ -7,16 +7,17 @@ and caches them for about 10 minutes, so editing the site updates the bot.
 - Runs as a **Cloudflare Worker** (free tier) using Discord's *HTTP interactions endpoint*.
   There's no always-on process, no gateway connection and no database.
 - Needs only the `applications.commands` scope: no "bot" user, no privileged intents, and it can't read messages.
-- Commands: `/boss`, `/raid`, `/roles`, `/talents`, `/times`, `/guide`.
+- Commands: `/boss`, `/raid`, `/checklist`, `/times`, `/guide`.
 
 | Command | What it does | Who sees it |
 |---|---|---|
 | `/boss name:` | One boss card: mechanics in order ("When X → do Y"), roles, talents. Picking a whole raid shows each of its bosses. | Only you, unless `share:true` |
 | `/raid name:` | Full call sheet: Before you queue, roles, then one card per boss. Spans several messages when it's long. | Posted in the channel |
-| `/roles name:` | Role assignments (for one boss if you pick a boss) | Only you, unless `share:true` |
-| `/talents name:` | Talent conditions | Only you, unless `share:true` |
+| `/checklist name:` | What the team must hit for full rewards (talent conditions), for a whole fight or one boss | Only you, unless `share:true` |
 | `/times [what:]` | Countdowns: season end, Battle Pass, events, next update, daily/weekly reset, Guild War | Only you, unless `share:true` |
 | `/guide` | Site link and the list of commands | Only you |
+
+The bot states the guide plainly: it strips source citations ("(Game8)", "allthings.how's run…") and "needs verification" notes from what it shows (`src/clean.ts`). The site keeps them.
 
 Every time is a Discord timestamp (`<t:…:R>` and `<t:…:f>`). Discord shows each reader their own
 time zone and keeps the countdown ticking.
@@ -126,7 +127,7 @@ https://discord.com/oauth2/authorize?client_id=APP_ID&scope=applications.command
 - **The guild's server, later:** send the same URL to whoever has **Manage Server** in the guild's Discord.
   It asks for no permissions beyond adding slash commands.
 
-Then type `/` in a channel, and the six commands should appear. Try `/boss lodestar`, `/raid compass` and `/times`.
+Then type `/` in a channel, and the five commands should appear. Try `/boss lodestar`, `/raid compass` and `/times`.
 
 ### 6. Going live in the guild's server
 
@@ -169,7 +170,7 @@ npm run samples
 ```
 
 ```bash
-npm run samples -- "/boss veiled lady" "/talents liminal" "/times battlepass"
+npm run samples -- "/boss veiled lady" "/checklist liminal" "/times battlepass"
 ```
 
 These print sample replies built from the live site and check them against Discord's limits.

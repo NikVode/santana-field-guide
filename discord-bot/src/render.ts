@@ -1,5 +1,6 @@
 // Turns encounters and bosses from the site's data into Discord embeds.
 
+import { cleanNote } from "./clean";
 import { buildEmbed, clip, L, type Embed, type Line } from "./embed";
 import type { Boss, Encounter } from "./types";
 import { TYPE_LABEL } from "./types";
@@ -25,7 +26,6 @@ function firstSentence(text: string, max = 160) {
   }
   return clip(s, max);
 }
-const WARN = "⚠";
 
 /** "Lv 100 · 5 players" style header line for an encounter. */
 function metaLine(e: Encounter) {
@@ -33,11 +33,8 @@ function metaLine(e: Encounter) {
   return `${TYPE_LABEL[e.type] || e.type} · Lv ${lv} · ${e.players} players`;
 }
 
-function coverageLines(e: Encounter): Line[] {
-  const out: Line[] = [];
-  if (e.coverage && e.coverage !== "full") out.push(L(`_Guide coverage: ${e.coverage}. Confirm in game._`, 1));
-  if (e.needsVerification) out.push(L(`${WARN} _Parts of this guide still need verification._`, 1));
-  return out;
+function coverageLines(_e: Encounter): Line[] {
+  return [];
 }
 
 /** Lower-case the first letter of a trigger so it reads "When a yellow line…", unless it starts with a name. */
@@ -62,8 +59,9 @@ function namesFor(e: Encounter, b: Boss): string[] {
 export function mechanicLines(e: Encounter, b: Boss): Line[] {
   const prot = namesFor(e, b);
   return arr(b.mechanics).flatMap((m, i) => {
-    const out = [L(`**${i + 1}. ${m.name}**${m.needsVerification ? " " + WARN : ""}: When ${lcTrigger(m.trigger, prot)} → ${m.response}`, 1)];
-    if (m.note) out.push(L(`  _${m.note}_`, 3));
+    const out = [L(`**${i + 1}. ${m.name}**: When ${lcTrigger(m.trigger, prot)} → ${m.response}`, 1)];
+    const note = cleanNote(m.note);
+    if (note) out.push(L(`  _${note}_`, 3));
     return out;
   });
 }
@@ -71,8 +69,9 @@ export function mechanicLines(e: Encounter, b: Boss): Line[] {
 export function talentLines(b: Boss, withNotes = false): Line[] {
   return arr(b.talents).flatMap((t) => {
     const team = /team only/i.test(t.smartAssist || "") ? " · _team only_" : "";
-    const out = [L(`\`${t.code}\` ${t.condition}${t.needsVerification ? " " + WARN : ""}${team}`, 2)];
-    if (withNotes && t.notes) out.push(L(`  ↳ _${t.notes}_`, 3));
+    const out = [L(`\`${t.code}\` ${t.condition}${team}`, 2)];
+    const note = withNotes ? cleanNote(t.notes) : "";
+    if (note) out.push(L(`  ↳ _${note}_`, 3));
     return out;
   });
 }
@@ -84,12 +83,12 @@ export function bossEmbed(site: string, e: Encounter, b: Boss, opts: { maxTotal?
     L(`**${e.name}** · ${metaLine(e)}${e.bosses.length > 1 ? ` · Boss ${idx + 1} of ${e.bosses.length}` : ""}`, 1),
     ...coverageLines(e),
   ];
-  if (b.needsVerification) desc.push(L(`${WARN} _${b.verifyNote || "This boss still needs verification."}_`, 1));
   if (b.summary) desc.push(L("", 3), L(b.summary, 3));
-  if (b.worldBossNote) desc.push(L(`_${b.worldBossNote}_`, 3));
+  const wb = cleanNote(b.worldBossNote);
+  if (wb) desc.push(L(`_${wb}_`, 3));
   desc.push(L("", 1), L("__**Mechanics, in order**__", 1));
   const mech = mechanicLines(e, b);
-  desc.push(...(mech.length ? mech : [L("_No confirmed mechanics written up yet._", 1)]));
+  desc.push(...(mech.length ? mech : [L("_No mechanics written up yet._", 1)]));
 
   const roles = arr(e.roles).filter((r) => r.duties && r.duties[b.id])
     .map((r) => L(`**${r.role}**${r.count ? ` ×${r.count}` : ""}: ${firstSentence(r.duties![b.id])}`, 2));
@@ -99,7 +98,7 @@ export function bossEmbed(site: string, e: Encounter, b: Boss, opts: { maxTotal?
     desc, moreUrl: bossUrl(site, e, b), maxTotal: opts.maxTotal,
     fields: [
       { name: "Roles to assign", lines: roles },
-      { name: "Talents", lines: talents.length ? talents : [L("_No talent conditions confirmed yet._", 2)] },
+      { name: "Talents", lines: talents.length ? talents : [L("_No talent conditions listed._", 2)] },
     ],
   });
 }
@@ -112,16 +111,17 @@ export function beforeEmbed(site: string, e: Encounter): Embed {
     L(`Bosses: ${e.bosses.map((b) => shortName(b.name)).join(" → ")}`, 1),
   ];
   const lvl = [String(req.level ?? e.level), ...arr(e.variants).map((v) => `${v.name}: Lv ${v.level}${v.mastery ? ` (mastery ${v.mastery})` : ""}`)].join(" · ");
-  const mastery = arr(req.mastery).map((m) => L(`${m.value}${m.source ? ` _(${m.source})_` : ""}`, 2));
+  const mastery = [...new Set(arr(req.mastery).map((m) => String(m.value || "").trim())
+    .filter((v) => v && !/^not (listed|published)$/i.test(v)))].map((v) => L(v, 2));
   return buildEmbed({
     title: `${e.name}: call sheet`, url: encUrl(site, e, "before"), color: colorOf(e), moreUrl: encUrl(site, e, "before"),
     desc: [...desc, L("", 1), L("__**Before you queue**__", 1)],
     fields: [
       { name: "Level", lines: [L(lvl, 1)] },
-      { name: "Mastery", lines: mastery.length ? mastery : [L("_Not published_", 2)] },
+      { name: "Mastery", lines: mastery },
       { name: "Party", lines: req.party ? [L(req.party, 1)] : [] },
       { name: "Bring / equip", lines: arr(req.bring).map((x) => L(`• ${x}`, 1)) },
-      { name: "Notes", lines: arr(req.notes).map((x) => L(`• ${x}`, 3)) },
+      { name: "Notes", lines: arr(req.notes).map(cleanNote).filter(Boolean).map((x) => L(`• ${x}`, 3)) },
     ],
   });
 }
@@ -142,14 +142,14 @@ export function rolesEmbed(site: string, e: Encounter, only?: Boss): Embed {
   });
 }
 
-/** Talent conditions for an encounter (or one boss). */
-export function talentsEmbed(site: string, e: Encounter, only?: Boss): Embed {
+/** /checklist: the talent conditions the team must hit for full rewards (whole fight, or one boss). */
+export function checklistEmbed(site: string, e: Encounter, only?: Boss): Embed {
   const bosses = only ? [only] : e.bosses;
   const any = bosses.some((b) => arr(b.talents).length);
   return buildEmbed({
-    title: `Talents: ${only ? shortName(only.name) + " · " : ""}${e.name}`, url: encUrl(site, e, "talents-" + bosses[0].id), color: colorOf(e),
+    title: `Checklist: ${only ? shortName(only.name) + " · " : ""}${e.name}`, url: encUrl(site, e, "talents-" + bosses[0].id), color: colorOf(e),
     moreUrl: encUrl(site, e, "talents-" + bosses[0].id),
-    desc: [L(metaLine(e), 1), ...coverageLines(e), ...(any ? [] : [L("_No talent conditions confirmed yet._", 1)])],
-    fields: bosses.map((b) => ({ name: shortName(b.name), lines: arr(b.talents).length ? talentLines(b, true) : [L("_None confirmed yet._", 1)] })),
+    desc: [L(`${metaLine(e)} · hit every one for full rewards`, 1), ...(any ? [] : [L("_No talent conditions listed for this fight._", 1)])],
+    fields: bosses.map((b) => ({ name: shortName(b.name), lines: arr(b.talents).length ? talentLines(b, true) : [L("_None listed._", 1)] })),
   });
 }

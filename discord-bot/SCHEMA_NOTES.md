@@ -10,7 +10,7 @@ The bot uses two of them:
 
 | File | Used for |
 |---|---|
-| `content/encounters.json` | `/boss`, `/raid`, `/roles`, `/talents`, autocomplete |
+| `content/encounters.json` | `/boss`, `/raid`, `/checklist`, autocomplete |
 | `content/patch.json` | `/times` (season, milestones, resets, Guild War, coming soon) |
 | `content/activities.json` | not used (its schedules are free text, with no dates the bot could count down to) |
 
@@ -38,7 +38,7 @@ Site anchors the bot links to (the same ones `app.js` creates):
 Gaps the bot handles gracefully instead of inventing data:
 
 - **Boss ids are not globally unique.** `twin-lions` and `murong-yuan` each appear in two encounters, so the bot keys a boss as `<encId>/<bossId>`.
-- **No roles** in 6 encounters (Abyssal Lament, Drunken Verse, Yama's Seal, Sorrow of Mortalbound, Blazing Gale Dance, Dream Jinming Pool). Here `/roles` says "No role assignments written up yet" and links to the site.
+- **No roles** in 6 encounters (Abyssal Lament, Drunken Verse, Yama's Seal, Sorrow of Mortalbound, Blazing Gale Dance, Dream Jinming Pool). Here the `/raid` roles card says "No role assignments written up yet" and links to the site.
 - **No mechanics or talents** for some bosses (Blazing Gale Dance is a stub; Sorrow of Mortalbound has no talents). The bot says so instead of leaving the section blank.
 - **Names carry extras.** Examples: "Lodestar (Swordmaster)", "Bai Chuyu (the Veiled Lady)", "Bloodstained Sands (+ Supreme)", "Zheng'e". For matching, the bot also indexes the name without the bracketed part, the bracketed part itself, and a version with punctuation removed, so "zheng e" finds Zheng'e.
 
@@ -99,3 +99,9 @@ It has no time of its own. If the site's weekly reset changes, this rule moves w
 - An exact time on `comingSoon[].date`. The bot shows the date only.
 - A machine-readable end date for the Battle Pass in `comingSoon` / `activities`. The bot uses the milestones.
 - A guild battlegroup. `/times guildwar` lists all five, and the overview shows the soonest.
+
+## What the bot leaves out
+
+`verifyNote`, `verifyNotes`, `needsVerification`, `coverage` and `sources` aren't shown. Every other string is
+scrubbed by `src/clean.ts`: source asides in brackets are removed, sentences that only cite a source are removed,
+and `note` / `notes` / `worldBossNote` lines that are only about sources or verification are dropped.
