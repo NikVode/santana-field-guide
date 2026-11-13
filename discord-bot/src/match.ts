@@ -10,7 +10,8 @@ export type Target =
   | { kind: "boss"; key: string; enc: Encounter; boss: Boss };
 
 interface Entry { target: Target; label: string; terms: string[]; aliasTerms: string[] }
-export interface Index { entries: Entry[]; byKey: Map<string, Entry> }
+/** byLabel: normalized autocomplete label -> entry. Discord sometimes sends the picked choice's label instead of its value. */
+export interface Index { entries: Entry[]; byKey: Map<string, Entry>; byLabel: Map<string, Entry> }
 
 /** lowercase, apostrophes dropped, other punctuation -> space, collapsed. */
 export const norm = (s: string) => String(s).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "")
@@ -40,7 +41,12 @@ type AliasMap = Record<string, string | string[]>;
 export function buildIndex(encounters: Encounter[], aliases: AliasMap = (aliasFile as { aliases: AliasMap }).aliases): Index {
   const entries: Entry[] = [];
   const byKey = new Map<string, Entry>();
-  const add = (en: Entry) => { entries.push(en); byKey.set(en.target.key, en); };
+  const byLabel = new Map<string, Entry>();
+  const add = (en: Entry) => {
+    entries.push(en); byKey.set(en.target.key, en);
+    // Both the full label and the 100-char version autocomplete actually sends; the first entry wins a tie.
+    for (const l of [en.label, en.label.slice(0, 100)]) if (!byLabel.has(norm(l))) byLabel.set(norm(l), en);
+  };
   for (const e of encounters) {
     const levels = [e.level, ...(e.variants || []).map((v) => v.level)];
     const lvTerms = levels.flatMap((l) => [`lv${l} ${short(e.type)}`, `lv ${l} ${short(e.type)}`, `${short(e.type)}${l}`, `${short(e.type)} ${l}`, `${l} ${short(e.type)}`]);
@@ -58,7 +64,7 @@ export function buildIndex(encounters: Encounter[], aliases: AliasMap = (aliasFi
       if (en) en.aliasTerms.push(norm(nick)); // aliases pointing at ids the site no longer has are ignored
     }
   }
-  return { entries, byKey };
+  return { entries, byKey, byLabel };
 }
 
 /** 0 exact, 1 prefix, 2 word prefix, 3 substring, 4 compact substring; aliases +0.5; null = no match. */
@@ -128,11 +134,16 @@ export function suggest(index: Index, query: string, n = 3): Entry[] {
 
 export type Resolved = { ok: true; target: Target } | { ok: false; suggestions: Entry[] };
 
-/** Resolve a picked autocomplete value or free text. */
+/** Resolve a picked autocomplete value (its id, or its label), or free text. */
 export function resolve(index: Index, value: string, prefer: Prefer): Resolved {
   const raw = String(value || "").trim();
-  const direct = index.byKey.get(raw);
+  const direct = index.byKey.get(raw) || index.byLabel.get(norm(raw));
   if (direct) return { ok: true, target: direct.target };
+  // A label from an older index (e.g. the boss count changed): retry with the name before the first "·".
+  if (raw.includes("·")) {
+    const head = raw.slice(0, raw.indexOf("·")).trim();
+    if (head) { const r = resolve(index, head, prefer); if (r.ok) return r; }
+  }
   const q = norm(raw);
   if (!q) return { ok: false, suggestions: suggest(index, raw) };
   const ranked = rank(index, raw, prefer);

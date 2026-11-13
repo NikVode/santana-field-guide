@@ -7,14 +7,14 @@ and caches them for about 10 minutes, so editing the site updates the bot.
 - Runs as a **Cloudflare Worker** (free tier) using Discord's *HTTP interactions endpoint*.
   There's no always-on process, no gateway connection and no database.
 - Needs only the `applications.commands` scope: no "bot" user, no privileged intents, and it can't read messages.
-- Commands: `/boss`, `/raid`, `/roles`, `/talents`, `/times`, `/guide`.
+- Commands: `/boss`, `/raid`, `/checklist`, `/times`, `/guide`.
+- States the guide plainly: source citations and verification notes are left out of everything the bot shows (see below).
 
 | Command | What it does | Who sees it |
 |---|---|---|
 | `/boss name:` | One boss card: mechanics in order ("When X → do Y"), roles, talents. Picking a whole raid shows each of its bosses. | Only you, unless `share:true` |
 | `/raid name:` | Full call sheet: Before you queue, roles, then one card per boss. Spans several messages when it's long. | Posted in the channel |
-| `/roles name:` | Role assignments (for one boss if you pick a boss) | Only you, unless `share:true` |
-| `/talents name:` | Talent conditions | Only you, unless `share:true` |
+| `/checklist name:` | What the team must do for full rewards (talent conditions), for a raid or one boss | Only you, unless `share:true` |
 | `/times [what:]` | Countdowns: season end, Battle Pass, events, next update, daily/weekly reset, Guild War | Only you, unless `share:true` |
 | `/guide` | Site link and the list of commands | Only you |
 
@@ -126,7 +126,7 @@ https://discord.com/oauth2/authorize?client_id=APP_ID&scope=applications.command
 - **The guild's server, later:** send the same URL to whoever has **Manage Server** in the guild's Discord.
   It asks for no permissions beyond adding slash commands.
 
-Then type `/` in a channel, and the six commands should appear. Try `/boss lodestar`, `/raid compass` and `/times`.
+Then type `/` in a channel, and the five commands should appear. Try `/boss lodestar`, `/raid compass` and `/times`.
 
 ### 6. Going live in the guild's server
 
@@ -169,7 +169,7 @@ npm run samples
 ```
 
 ```bash
-npm run samples -- "/boss veiled lady" "/talents liminal" "/times battlepass"
+npm run samples -- "/boss veiled lady" "/checklist liminal" "/times battlepass"
 ```
 
 These print sample replies built from the live site and check them against Discord's limits.
@@ -181,6 +181,14 @@ npx wrangler tail
 This shows live logs from the deployed Worker.
 
 ## How it works (short)
+
+- **No citations:** the guild treats the guide as correct, so the bot states it plainly. `src/clean.ts` makes a cleaned
+  copy of the encounters (built once per fetched copy, like the search index) with source asides such as "(Game8)",
+  source-only sentences and notes, and "Check in game" tags removed. The bot also shows no ⚠ markers, coverage lines,
+  `verifyNote`s, "Source:" lines or "Not published" mastery. `/times` passes reset, Guild War and milestone notes
+  through the same cleaner. The site itself still shows all of its notes. See SCHEMA_NOTES.md > What the bot leaves out.
+- **Picked choices:** Discord sometimes sends the picked autocomplete choice's label instead of its id, so `resolve()`
+  also looks labels up, and falls back to the name before the first "·".
 
 - **Signatures:** every request's `X-Signature-Ed25519` and `X-Signature-Timestamp` are checked with WebCrypto against
   the Public Key. Anything invalid gets 401. PING gets PONG.

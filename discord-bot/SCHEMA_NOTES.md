@@ -10,7 +10,7 @@ The bot uses two of them:
 
 | File | Used for |
 |---|---|
-| `content/encounters.json` | `/boss`, `/raid`, `/roles`, `/talents`, autocomplete |
+| `content/encounters.json` | `/boss`, `/raid`, `/checklist`, autocomplete |
 | `content/patch.json` | `/times` (season, milestones, resets, Guild War, coming soon) |
 | `content/activities.json` | not used (its schedules are free text, with no dates the bot could count down to) |
 
@@ -22,9 +22,9 @@ Encounter fields the bot uses:
 
 - `id`: the anchor for `encounter.html?id=<id>`
 - `name`, `type` (`sword-trial` | `heros-realm`), `level`, `players` (5 | 10)
-- `coverage` (`full` | `partial` | `stub`), `needsVerification`
+- `coverage` (`full` | `partial` | `stub`) and `needsVerification` exist, but the bot doesn't show them
 - `variants[]` `{ name, level, mastery }`, for example Supreme tiers
-- `requirements` `{ level, mastery[] {value, source}, party, bring[], notes[] }`, shown as "Before you queue"
+- `requirements` `{ level, mastery[] {value, source}, party, bring[], notes[] }`, shown as "Before you queue" (mastery `source` isn't shown, and "Not listed" / "Not published" values are left out)
 - `roles[]` `{ role, count, duties: { <bossId>: text } }`. Duties are keyed by boss id.
 - `bosses[]` `{ id, name, summary, worldBossNote, needsVerification, verifyNote, mechanics[], talents[] }`
   - `mechanics[]` `{ name, trigger, response, note, needsVerification }`, in fight order. The bot renders each one as "**name**: When trigger → response".
@@ -38,7 +38,7 @@ Site anchors the bot links to (the same ones `app.js` creates):
 Gaps the bot handles gracefully instead of inventing data:
 
 - **Boss ids are not globally unique.** `twin-lions` and `murong-yuan` each appear in two encounters, so the bot keys a boss as `<encId>/<bossId>`.
-- **No roles** in 6 encounters (Abyssal Lament, Drunken Verse, Yama's Seal, Sorrow of Mortalbound, Blazing Gale Dance, Dream Jinming Pool). Here `/roles` says "No role assignments written up yet" and links to the site.
+- **No roles** in 6 encounters (Abyssal Lament, Drunken Verse, Yama's Seal, Sorrow of Mortalbound, Blazing Gale Dance, Dream Jinming Pool). Here the `/raid` roles card says "No role assignments written up yet" and links to the site.
 - **No mechanics or talents** for some bosses (Blazing Gale Dance is a stub; Sorrow of Mortalbound has no talents). The bot says so instead of leaving the section blank.
 - **Names carry extras.** Examples: "Lodestar (Swordmaster)", "Bai Chuyu (the Veiled Lady)", "Bloodstained Sands (+ Supreme)", "Zheng'e". For matching, the bot also indexes the name without the bracketed part, the bracketed part itself, and a version with punctuation removed, so "zheng e" finds Zheng'e.
 
@@ -52,7 +52,7 @@ Gaps the bot handles gracefully instead of inventing data:
 
 | Data | Site behavior | Bot behavior |
 |---|---|---|
-| `season.endDate` + `season.endTime` | Counts it down on Home | Same instant. Shows "⚠ unverified" when `season.needsVerification` is set, with `verifyNote`. |
+| `season.endDate` + `season.endTime` | Counts it down on Home | Same instant. `needsVerification` / `verifyNote` are not shown. |
 | `season.milestones[]` with `at` | Counts it down on Home | Same instant, parsed from `at` |
 | `season.milestones[]` **without** `at` | Shows the `date` text only; **no countdown** | Parses the leading date and time of `date` with the same `parseServerDate`. If `date` is a range (`A → B`), the item shows "starts" before A and "ends" until B. |
 | `comingSoon[]` `{ title, date, details }` | Shows the date as a badge | Listed with the date only (no exact time is in the data). It drops off after that server day ends. An entry that repeats a milestone on the same server date is hidden (see below). |
@@ -67,7 +67,7 @@ Item categories (these drive `/times arena`, `/times battlepass`…) are worked 
 - `arena` / `mausoleum` / `battlepass` / `events` / `updates`: assigned by keywords in the label (`arena`, `mausoleum`, `battle pass`, `event`, `version|update|patch`).
 - An option only appears in autocomplete if at least one upcoming item has that category.
 
-`season.endDate` 2027-01-07 is flagged `needsVerification` in the data (its source is Game8 and GameMarket, and 05:00 is assumed). The bot passes that warning on.
+`season.endDate` 2027-01-07 is flagged `needsVerification` in the data. The bot doesn't show that flag (see below).
 
 ### Recurring rules (the site's data already has all three)
 
@@ -89,9 +89,33 @@ The only content in the bot besides `aliases.json`. Each rule lists its source:
 |---|---|---|
 | Battle Pass weekly EXP cap | `sameAs: "weekly"`, so it follows the site's weekly reset | patch.json `resets.note` ("The Battle Pass weekly EXP cap also resets Monday 05:00 UTC+8") and `checklist.weekly[bp-cap].note` |
 
-It has no time of its own. If the site's weekly reset changes, this rule moves with it. `/times` folds it into the weekly-reset line ("also resets: Battle Pass weekly EXP cap").
+It has no time of its own. If the site's weekly reset changes, this rule moves with it. `/times` folds it into the weekly-reset line ("also resets: Battle Pass weekly EXP cap"). The rule's `source` stays in `times.json` for maintainers and isn't shown.
 
 **Left out because I couldn't source them:** Arena 3v3 and Group Strategy hours, and Breaking Army or Guild Showdown windows. `activities.json` describes these in free text only, and they depend on each battlegroup's local time. Add them to `times.json` if you want them (see the README).
+
+## What the bot leaves out
+
+The guild treats the guide as correct, so the bot states it plainly. The site keeps all of its notes; only what the bot
+shows changes. `src/clean.ts` does this on a deep copy of the encounters, built once per fetched copy:
+
+- `scrub(text)` runs on every shown string. It removes bracketed asides that cite a source or say "in-game"
+  ("(Game8)", "(in-game callout)", "(Game8, WWM Handbook)"), sentences that only cite a source
+  ("allthings.how's run sent orange notes."), and "Check in game." / "Confirm in game." tags. It rewrites
+  "Sources differ: Game8 says X; the in-game callout just says Y. Either way, Z." as "X. Z.", and strips a leading
+  "Game8:" / "Official:" label but keeps the tip after it.
+- `cleanNote(note)` runs on `note`, `notes` and `worldBossNote`. It scrubs, strips a leading "Guild notes add:", and drops
+  the note entirely when it's only about sources or verification (it names a source, or says "confirmed", "verified",
+  "assumed", "talent text", "in-game name/text/objective", "callout says", "same condition", "the Oct 29 notes"…).
+  Gameplay tips stay, including in-game callouts like the enrage line.
+- Not touched: `id`, `url`, `video(s)`, `sources`, `verifyNote(s)`, `type`, and the id/enum fields `boss` and `coverage`.
+- Not shown at all: ⚠ markers, `needsVerification`, `verifyNote`, the coverage line, mastery `source`, "Not listed" /
+  "Not published" mastery values, the season's "not confirmed" warning, and the "Source:" lines of `times.json` rules.
+- `/times` runs `resets.note`, `guildWar.note` and milestone notes through `cleanNote`, and coming-soon details through `scrub`.
+
+Source names it knows: Game8, GameMarket, Where Guilds Meet, allthings.how, Mein-MMO, SenseOS, WWM / Where Winds Meet
+Handbook, Fextralife, Reddit, YouTube, Points N Pixels, wiki, Akira Y. Add new ones to `SOURCE` in `src/clean.ts`.
+A render test fails if any reply from `/raid`, `/boss`, `/checklist` or `/times` contains a source name, ⚠, "verif",
+"Source:", "Not published" or "assumed".
 
 ## Fields the bot would like but the data doesn't have
 

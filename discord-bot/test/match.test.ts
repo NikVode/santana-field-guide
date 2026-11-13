@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import aliasFile from "../aliases.json";
-import { autocomplete, buildIndex, resolve, type Index } from "../src/match";
+import { autocomplete, bossLabel, buildIndex, encLabel, resolve, type Index } from "../src/match";
 import { runCommand } from "../src/commands";
 import type { SiteData } from "../src/types";
 import { liveData } from "./live";
@@ -70,6 +70,31 @@ describe("free-typed names", () => {
   it("ambiguous names across raids get suggestions, not a guess", () => {
     const r = resolve(index, "twin lions", "boss");
     expect(r.ok).toBe(false);
+  });
+  it("resolves an autocomplete label when Discord sends it instead of the id", () => {
+    for (const e of data.encounters) {
+      for (const prefer of ["encounter", "boss"] as const) {
+        const r = resolve(index, encLabel(e), prefer);
+        expect(r.ok && r.target.key, `${encLabel(e)} (${prefer})`).toBe(e.id);
+      }
+      for (const b of e.bosses) {
+        const r = resolve(index, bossLabel(e, b), "boss");
+        expect(r.ok && r.target.key, bossLabel(e, b)).toBe(`${e.id}/${b.id}`);
+      }
+    }
+    const l = resolve(index, "Landscourge Thunder · Sword Trial Lv 91 · 2 bosses", "encounter");
+    expect(l.ok && l.target.key).toBe("landscourge-thunder");
+    const s = resolve(index, "Lodestar (Swordmaster) · Compass & Chime (ST Lv 100)", "boss");
+    expect(s.ok && s.target.key).toBe("compass-chime/lodestar");
+  });
+  it("falls back to the name before the first '·' for an out-of-date label", () => {
+    const r = resolve(index, "Landscourge Thunder · Sword Trial Lv 91 · 3 bosses", "encounter");
+    expect(r.ok && r.target.key).toBe("landscourge-thunder");
+  });
+  it("/raid with the Landscourge label posts the call sheet", () => {
+    const rep = runCommand("raid", { name: "Landscourge Thunder · Sword Trial Lv 91 · 2 bosses" }, data);
+    expect(rep.messages[0].content || "").not.toMatch(/No raid called/);
+    expect(rep.messages[0].embeds![0].title).toBe("Landscourge Thunder: call sheet");
   });
   it("an unmatched /boss replies privately with 'Did you mean'", () => {
     const rep = runCommand("boss", { name: "bel toler", share: true }, data);

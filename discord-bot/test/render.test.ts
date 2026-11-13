@@ -29,21 +29,68 @@ describe("every encounter and boss in the live data renders within Discord limit
       }
     }
   });
-  it("/raid, /roles, /talents for every encounter and boss", () => {
+  it("/raid and /checklist for every encounter and boss", () => {
     for (const e of data.encounters) {
       const raid = runCommand("raid", { name: e.id }, data);
       check(`/raid ${e.id}`, raid);
       expect(raid.ephemeral).toBe(false);
       expect(raid.messages.flatMap((m) => m.embeds || []).length).toBe(2 + e.bosses.length);
       for (const key of [e.id, ...e.bosses.map((b) => `${e.id}/${b.id}`)]) {
-        check(`/roles ${key}`, runCommand("roles", { name: key }, data));
-        check(`/talents ${key}`, runCommand("talents", { name: key }, data));
+        const rep = runCommand("checklist", { name: key }, data);
+        check(`/checklist ${key}`, rep);
+        const em = rep.messages[0].embeds![0];
+        expect(em.title).toMatch(new RegExp(`^Checklist: .*${e.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
+        expect(em.description).toContain("hit every one for full rewards");
       }
     }
+  });
+  it("/roles and /talents are gone; /guide lists /checklist", () => {
+    for (const cmd of ["roles", "talents"]) expect(runCommand(cmd, { name: "compass-chime" }, data).messages[0].content).toBe("Unknown command.");
+    const guide = runCommand("guide", {}, data).messages[0].content!;
+    expect(guide).toContain("`/checklist`");
+    expect(guide).not.toMatch(/\/roles|\/talents/);
   });
   it("/boss is private by default and public with share:true", () => {
     expect(runCommand("boss", { name: "lodestar" }, data).ephemeral).toBe(true);
     expect(runCommand("boss", { name: "lodestar", share: true }, data).ephemeral).toBe(false);
+  });
+});
+
+describe("no source citations or verification notes in anything the bot shows", () => {
+  const BANNED = [/⚠/, /Game8/i, /Where Guilds Meet/i, /allthings/i, /SenseOS/i, /Handbook/i, /verif/i, /Source:/i, /Not published/i, /assumed/i];
+  const textOf = (rep: ReturnType<typeof runCommand>) => JSON.stringify(rep.messages)
+    .replace(/"url":"[^"]*"/g, "").replace(/\]\(https?:[^)]*\)/g, "]"); // links aren't shown text
+  const clean = (label: string, rep: ReturnType<typeof runCommand>) => {
+    const text = textOf(rep);
+    for (const re of BANNED) expect(text, `${label} contains ${re}`).not.toMatch(re);
+  };
+  it("/raid, /boss and /checklist for every encounter", () => {
+    for (const e of data.encounters) {
+      clean(`/raid ${e.id}`, runCommand("raid", { name: e.id }, data));
+      clean(`/boss ${e.id}`, runCommand("boss", { name: e.id }, data));
+      clean(`/checklist ${e.id}`, runCommand("checklist", { name: e.id }, data));
+    }
+  });
+  it("/times, overall and every option", () => {
+    const now = new Date("2026-11-13T04:00:00Z");
+    clean("/times", runCommand("times", {}, data, now));
+    for (const what of ["season", "resets", "guildwar", "daily", "weekly", "arena", "battlepass", "events", "coming"])
+      clean(`/times ${what}`, runCommand("times", { what }, data, now));
+  });
+  it("/checklist halcyon shows the talent lines without citation notes", () => {
+    const em = runCommand("checklist", { name: "halcyon" }, data).messages[0].embeds![0];
+    const field = em.fields!.find((f) => /Halcyon/.test(f.name))!;
+    const lines = field.value.split("\n").filter((l) => l.startsWith("`"));
+    expect(lines.length).toBe(data.encounters.find((e) => e.id === "liminal-ascension")!.bosses.find((b) => b.id === "halcyon")!.talents!.length);
+    expect(field.value).toContain("· _team only_");
+    expect(field.value).not.toMatch(/same condition|talent text/i);
+  });
+  it("/raid drops 'Not published' mastery and the (source) after mastery values", () => {
+    for (const e of data.encounters) {
+      const before = runCommand("raid", { name: e.id }, data).messages[0].embeds![0];
+      const m = before.fields?.find((f) => f.name === "Mastery");
+      if (m) { expect(m.value).not.toMatch(/Not (listed|published)/i); expect(m.value).not.toMatch(/_\(/); }
+    }
   });
 });
 
