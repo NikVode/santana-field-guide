@@ -10,7 +10,7 @@ The bot uses two of them:
 
 | File | Used for |
 |---|---|
-| `content/encounters.json` | `/boss`, `/raid`, `/checklist`, autocomplete |
+| `content/encounters.json` | `/boss`, `/raid`, `/talents`, autocomplete |
 | `content/patch.json` | `/times` (season, milestones, resets, Guild War, coming soon) |
 | `content/activities.json` | not used (its schedules are free text, with no dates the bot could count down to) |
 
@@ -114,7 +114,7 @@ shows changes. `src/clean.ts` does this on a deep copy of the encounters, built 
 
 Source names it knows: Game8, GameMarket, Where Guilds Meet, allthings.how, Mein-MMO, SenseOS, WWM / Where Winds Meet
 Handbook, Fextralife, Reddit, YouTube, Points N Pixels, wiki, Akira Y. Add new ones to `SOURCE` in `src/clean.ts`.
-A render test fails if any reply from `/raid`, `/boss`, `/checklist` or `/times` contains a source name, ⚠, "verif",
+A render test fails if any reply from `/raid`, `/boss`, `/talents` or `/times` contains a source name, ⚠, "verif",
 "Source:", "Not published" or "assumed".
 
 ## Fields the bot would like but the data doesn't have

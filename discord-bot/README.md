@@ -7,14 +7,14 @@ and caches them for about 10 minutes, so editing the site updates the bot.
 - Runs as a **Cloudflare Worker** (free tier) using Discord's *HTTP interactions endpoint*.
   There's no always-on process, no gateway connection and no database.
 - Needs only the `applications.commands` scope: no "bot" user, no privileged intents, and it can't read messages.
-- Commands: `/boss`, `/raid`, `/checklist`, `/times`, `/guide`.
+- Commands: `/boss`, `/raid`, `/talents`, `/times`, `/guide`.
 - States the guide plainly: source citations and verification notes are left out of everything the bot shows (see below).
 
 | Command | What it does | Who sees it |
 |---|---|---|
 | `/boss name:` | One boss card: mechanics in order ("When X → do Y"), roles, talents. Picking a whole raid shows each of its bosses. | Only you, unless `share:true` |
 | `/raid name:` | Full call sheet: Before you queue, roles, then one card per boss. Spans several messages when it's long. | Posted in the channel |
-| `/checklist name:` | What the team must do for full rewards (talent conditions), for a raid or one boss | Only you, unless `share:true` |
+| `/talents name:` | Talent conditions: what the team must do for full rewards, for a raid or one boss | Only you, unless `share:true` |
 | `/times [what:]` | Countdowns: season end, Battle Pass, events, next update, daily/weekly reset, Guild War | Only you, unless `share:true` |
 | `/guide` | Site link and the list of commands | Only you |
 
@@ -169,7 +169,7 @@ npm run samples
 ```
 
 ```bash
-npm run samples -- "/boss veiled lady" "/checklist liminal" "/times battlepass"
+npm run samples -- "/boss veiled lady" "/talents liminal" "/times battlepass"
 ```
 
 These print sample replies built from the live site and check them against Discord's limits.

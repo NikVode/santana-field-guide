@@ -136,12 +136,12 @@ export function rolesEmbed(site: string, e: Encounter): Embed {
   });
 }
 
-/** /checklist: the talent conditions the team must hit for full rewards (whole encounter or one boss). */
-export function checklistEmbed(site: string, e: Encounter, only?: Boss): Embed {
+/** /talents: the talent conditions the team must hit for full rewards (whole encounter or one boss). */
+export function talentsEmbed(site: string, e: Encounter, only?: Boss): Embed {
   const bosses = only ? [only] : e.bosses;
   const any = bosses.some((b) => arr(b.talents).length);
   return buildEmbed({
-    title: `Checklist: ${only ? shortName(only.name) + " · " : ""}${e.name}`, url: encUrl(site, e, "talents-" + bosses[0].id), color: colorOf(e),
+    title: `Talents: ${only ? shortName(only.name) + " · " : ""}${e.name}`, url: encUrl(site, e, "talents-" + bosses[0].id), color: colorOf(e),
     moreUrl: encUrl(site, e, "talents-" + bosses[0].id),
     desc: [L(`${metaLine(e)} · hit every one for full rewards`, 1), ...(any ? [] : [L("_No talent conditions listed._", 1)])],
     fields: bosses.map((b) => ({ name: shortName(b.name), lines: arr(b.talents).length ? talentLines(b, true) : [L("_None listed._", 1)] })),

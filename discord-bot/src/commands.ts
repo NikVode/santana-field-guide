@@ -3,7 +3,7 @@
 import { LIMITS, packMessages, type Embed } from "./embed";
 import { autocomplete, buildIndex, resolve, type Prefer } from "./match";
 import { cleanEncounters } from "./clean";
-import { beforeEmbed, bossEmbed, checklistEmbed, rolesEmbed } from "./render";
+import { beforeEmbed, bossEmbed, rolesEmbed, talentsEmbed } from "./render";
 import { buildTimes, selectTimes, timesChoices, timesEmbed } from "./times";
 import type { Encounter, SiteData } from "./types";
 
@@ -24,7 +24,7 @@ const shareOpt = { type: BOOLEAN, name: "share", description: "Post it in the ch
 export const COMMANDS = [
   { name: "boss", description: "Look up one boss: mechanics, roles and talents", options: [nameOpt("Boss or raid name (nicknames work)"), shareOpt] },
   { name: "raid", description: "Post the full call sheet for a Sword Trial or Hero's Realm in this channel", options: [nameOpt("Sword Trial or Hero's Realm")] },
-  { name: "checklist", description: "What the team must do for full rewards (talent conditions)", options: [nameOpt("Sword Trial, Hero's Realm or boss"), shareOpt] },
+  { name: "talents", description: "Talent conditions: what the team must do for full rewards", options: [nameOpt("Sword Trial, Hero's Realm or boss"), shareOpt] },
   { name: "times", description: "Countdowns: season end, Battle Pass, events, resets", options: [
     { type: STRING, name: "what", description: "Pick one (default: everything upcoming)", required: false, autocomplete: true }, shareOpt] },
   { name: "guide", description: "Link to the Santana Field Guide and the list of commands" },
@@ -67,7 +67,7 @@ export function runCommand(cmd: string, opts: Opts, data: SiteData, now = new Da
   if (cmd === "guide") {
     return reply([{ content: [
       `**Santana Field Guide** (unofficial, fan-made): ${site}`,
-      "`/boss` one boss · `/raid` full call sheet · `/checklist` what to do for full rewards · `/times` countdowns · `/guide` this",
+      "`/boss` one boss · `/raid` full call sheet · `/talents` what to do for full rewards · `/times` countdowns · `/guide` this",
     ].join("\n") }]);
   }
 
@@ -96,8 +96,8 @@ export function runCommand(cmd: string, opts: Opts, data: SiteData, now = new Da
     }
     case "raid":
       return reply(messagesFrom([beforeEmbed(site, enc), rolesEmbed(site, enc), ...enc.bosses.map((b) => bossEmbed(site, enc, b))], stale));
-    case "checklist":
-      return reply(messagesFrom([checklistEmbed(site, enc, boss)], stale));
+    case "talents":
+      return reply(messagesFrom([talentsEmbed(site, enc, boss)], stale));
   }
   return { messages: [{ content: "Unknown command." }], ephemeral: true };
 }
