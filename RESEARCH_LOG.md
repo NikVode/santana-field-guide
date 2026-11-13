@@ -1,6 +1,6 @@
 # Research log: Santana Field Guide
 
-Researched 2026-11-12, the day before the Version 2.4 "Hutuo" update. **Nothing here has been checked in game.**
+Researched 2026-11-12, the day before the Version 2.4 "Hutuo" update, and updated for the 2.4 release on 2026-11-13 (see **Version 2.4 release pass** below). **Nothing here has been checked in game.**
 
 **Starting point.** The site was first built from fresh research because `research-notes.md` wasn't available. The guild's notes were then pasted in and merged the same day. They are saved as [`research-notes.md`](research-notes.md); their links were lost in the paste. See **Merge with the guild notes** below for what was checked, what was added and where the notes and sources disagree.
 
@@ -11,6 +11,35 @@ Researched 2026-11-12, the day before the Version 2.4 "Hutuo" update. **Nothing 
 - **Flagged**: `needsVerification: true` in the JSON. The site shows a ⚠ badge.
 - **Source quality.** Game8, allthings.how, Where Guilds Meet (whereguildsmeet.org) and the official site are treated as normal sources. Where Guilds Meet transcribes Akira Y's YouTube guides, which are often filmed on the Chinese server first. BoostRoom, BitTopup and Topuplist sell boosts or currency, so they're treated as weak sources and always flagged.
 - **What I couldn't do.** I couldn't watch videos or read transcripts. Video timestamps come from pages that list them.
+
+---
+
+## Version 2.4 release pass (Nov 13)
+
+2.4 went live on Nov 13. The 2.4 entries had been drafted beforehand as "upcoming"; this pass switches them to live and adds what the release notes confirm.
+
+**Sources read**
+- **Official 2.4 overview** (wherewindsmeetgame.com/news/official/AcrossAutumnWaters.html). It's three tall images; I downloaded them and read the event and maintenance sections directly.
+- **Official 2.4 Path Balance Adjustment** (wherewindsmeetgame.com/news/official/1113PathBalance.html). Plain text.
+- **Game8 2.4 page** and **Twisted Voxel 2.4 patch notes**, as independent write-ups of the overview.
+
+**Confirmed by the official overview**
+- Live maintenance from 18:01 UTC+8; update available after 23:00 on relog; players who haven't relogged are disconnected at 00:00.
+- Mid-Season Sprint: Arena runs Nov 19 05:00 to Nov 26 04:59, Lv 20+, with weekly quests resetting Monday 05:00.
+- Enduring Flame ends Dec 10 04:59; Spectral Scroll ends Nov 28 04:59.
+
+**From Game8 + Twisted Voxel (2 sources)**
+- Hutuo River campaign boss is Xiao Han at Zhongdu Bridge. Wayfarer Bingshen is at Moonveil Knoll. Dual Spears arrives Nov 26.
+- Blades & Bonds (Horse Racing Chess, Tales on Tiles) and Windtail Express run to Jan 14, 2027 04:59; Swallow's Gifts to Dec 10 04:59.
+- No new Sword Trial or Hero's Realm in 2.4. Jianghu Tactics still isn't in the overview.
+
+**From the official Path Balance notice, added to the guide**
+- Changelog: Reset Tuning / Retuning Correction cooldown 5 → 3 days, free switching between sets a gear piece has used, 7-day Modulated Gear Recovery, Battle Build now saves Attuning / Mystic Enlightenment / Divinecraft, Lv 96–99 catch-up at 400% EXP.
+- Arena card: lower deflection caps, Training Terrace practice for 3v3 / Perception Forest / Group Strategy.
+- Guild War card: Panacea Fan EX healing is cut 60% from 3 sources within 60 s (80% for 4+).
+- Serpent's Fang "bring" list: Thundercry Blade / Stormbreaker Spear's defensive bonus now applies only when Constitution is higher than Power.
+
+**Removed:** the Scarlet Whispers Battle Pass milestone (ended Nov 13 17:59) and the 2.4 "coming soon" entry.
 
 ---
 
@@ -129,7 +158,7 @@ Every item in `research-notes.md` was re-checked against a source I could read b
 | Daily reset 05:00 UTC+8 | mein-mmo (22:00 German time = same moment in winter) | 1, flagged in note |
 | 2.4 Hutuo on Nov 13; contents | Game8 roadmap, MMOHuts, Techgenyz, HappyGamer | 2+ |
 | Dual Spears Nov 26 | Game8 roadmap, press | 2+ |
-| No new Sword Trial / Hero's Realm in 2.4 | No announcement mentions one | Absence of evidence. Check after patch |
+| No new Sword Trial / Hero's Realm in 2.4 | Official 2.4 overview, Game8 2.4 page, Twisted Voxel | 2+. None of the release write-ups lists one (Nov 13) |
 
 **Conflicts**
 - Version 2.0 is officially dated Jul 23 2026, but Game8's season table labels Season 4 (Jul 23) as "2.2 Perilous Eminence". The 2.2 date in the changelog is marked `?`.
@@ -263,4 +292,4 @@ Every item in `research-notes.md` was re-checked against a source I could read b
 5. **Yama's Seal** level: 81 or 86.
 6. **Season end:** does S5 end Nov 26 or Jan 7? Also check the daily reset time.
 7. Console button names for "interact" (F on PC) and the Chirpy device (G on PC).
-8. After Hutuo goes live (Nov 13, 23:00 UTC+8): any new Sword Trial or Hero's Realm, and when the two world bosses actually arrive.
+8. Hutuo is live: confirm in game that the two world bosses are up, whether their first-kill rewards are once only or weekly, and whether Campaign: Hutuo River is co-op.

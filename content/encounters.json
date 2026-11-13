@@ -1231,7 +1231,7 @@
         "bring": [
           "Flute of the Tides (gathers Snake Doctor's four fire snakes, lures the ice snake)",
           "A Panacea Fan healer (resurrection)",
-          "Optional tank (Thundercry Blade / Stormbreaker Spear) for Blood Mist"
+          "Optional tank (Thundercry Blade / Stormbreaker Spear) for Blood Mist. Since 2.4 their defensive bonus only applies when Constitution is higher than Power"
         ],
         "notes": [
           "Weekly cap: 5 Fang Chests + 5 Serpent Chests, no Energy cost. Resets Monday 05:00 UTC+8.",
@@ -1528,6 +1528,11 @@
           "url": "https://www.whereguildsmeet.org/bosses/snake-doctor",
           "site": "whereguildsmeet.org",
           "note": "game-data page"
+        },
+        {
+          "title": "Official: Version 2.4 Path Balance Adjustment Announcement (Nov 13)",
+          "url": "https://www.wherewindsmeetgame.com/news/official/1113PathBalance.html",
+          "site": "wherewindsmeetgame.com"
         }
       ],
       "guildNotes": "Carry run. Cheat-sheet depth only.",
