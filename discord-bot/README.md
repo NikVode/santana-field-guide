@@ -185,12 +185,13 @@ This shows live logs from the deployed Worker.
 - **Signatures:** every request's `X-Signature-Ed25519` and `X-Signature-Timestamp` are checked with WebCrypto against
   the Public Key. Anything invalid gets 401. PING gets PONG.
 - **Data:** files are kept fresh for 10 minutes, first in memory, then in the Workers Cache API. If the site can't be reached,
-  the bot serves the last good copy and says so. If it has no copy at all, it replies "the guide is unavailable right now".
+  the bot serves the last good copy and says so, and waits a minute before trying the site again, so replies stay fast.
+  If it has no copy at all, it replies "the guide is unavailable right now".
   (Cloudflare documents the Cache API for Workers on custom domains. On a plain `workers.dev` URL, the in-memory
   layer still caches, but each new Worker instance may re-fetch from GitHub Pages. That's fine at guild scale.)
 - **Slow answers:** Discord wants a reply within 3 seconds. If the site is slow, the bot acknowledges first, then fills
-  in the reply. Long `/raid` sheets go out as several messages through the interaction's own webhook. No bot token
-  is involved.
+  in the reply. Long `/raid` sheets go out as several messages through the interaction's own webhook, retried if
+  Discord isn't ready for them yet. No bot token is involved.
 - **Discord limits:** each card is built from prioritized lines. If something doesn't fit (4096 per description,
   1024 per field, 25 fields, 6000 per message, 10 embeds), the least important lines go first, and the card ends
   with "Full details on the site" and a link. Tests render every boss and encounter on the live site and check this.

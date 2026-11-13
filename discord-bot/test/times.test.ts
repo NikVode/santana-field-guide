@@ -36,13 +36,19 @@ describe("recurring resets", () => {
     const base = JSON.stringify([resetInfo(PATCH, now), buildTimes(PATCH, now).map((i) => [i.id, i.at])]);
     for (const tz of ["UTC", "America/Los_Angeles", "America/New_York", "Europe/Berlin", "Asia/Shanghai", "Asia/Kolkata", "Pacific/Kiritimati", "America/St_Johns", "Australia/Lord_Howe"]) {
       process.env.TZ = tz;
-      expect(new Date("2026-07-01T00:00:00Z").getTimezoneOffset() !== undefined).toBe(true);
       expect(JSON.stringify([resetInfo(PATCH, now), buildTimes(PATCH, now).map((i) => [i.id, i.at])]), tz).toBe(base);
     }
   });
+  it("really switches the machine's time zone (so the loop above means something)", () => {
+    const jan = new Date("2026-01-15T00:00:00Z");
+    process.env.TZ = "UTC"; expect(jan.getTimezoneOffset()).toBe(0);
+    process.env.TZ = "Asia/Kolkata"; expect(jan.getTimezoneOffset()).toBe(-330);
+    process.env.TZ = "America/St_Johns"; expect(jan.getTimezoneOffset()).toBe(210);
+  });
   it("renders Discord timestamps, never pre-converted local times", () => {
     const rep = runCommand("times", { what: "weekly" }, { siteUrl: "https://s/", encounters: [], patch: PATCH }, at("2026-11-15T15:00:00Z"));
-    expect(rep.messages[0].embeds![0].description).toContain("<t:1794776400:R> · <t:1794776400:f>".replace(/1794776400/g, String(Date.parse("2026-11-15T21:00:00Z") / 1000)));
+    const unix = Date.parse("2026-11-15T21:00:00Z") / 1000; // Mon 05:00 UTC+8
+    expect(rep.messages[0].embeds![0].description).toContain(`<t:${unix}:R> · <t:${unix}:f>`);
   });
   it("Guild War: each battlegroup's own clock, 'running now' for the first hour", () => {
     // Sat 20:30 at UTC-4 = Sun 00:30 UTC
@@ -82,6 +88,19 @@ describe("dated items", () => {
     expect(mid.verb).toBe("ends");
     expect(mid.at.toISOString()).toBe("2026-11-25T20:59:00.000Z");
     expect(f(at("2026-11-26T00:00:00Z"))).toBeUndefined();
+  });
+  it("a range with an unreadable end falls back to its start; extra arrows use the last part", () => {
+    const p: Patch = { ...PATCH, season: { milestones: [
+      { label: "Bad end", date: "2026-12-01 05:00 → 12-08 04:59" },
+      { label: "Three parts", date: "2026-12-01 05:00 → (break) → 2026-12-08 04:59" },
+    ] } };
+    const items = buildTimes(p, now);
+    const bad = items.find((i) => i.id === "bad-end")!;
+    expect(bad.at.toISOString()).toBe("2026-11-30T21:00:00.000Z");
+    expect(bad.verb).toBe("starts");
+    const three = buildTimes(p, at("2026-12-03T00:00:00Z")).find((i) => i.id === "three-parts")!;
+    expect(three.verb).toBe("ends");
+    expect(three.at.toISOString()).toBe("2026-12-07T20:59:00.000Z");
   });
   it("hides a coming-soon entry that repeats a milestone, keeps the rest", () => {
     const items = buildTimes(patch, now);

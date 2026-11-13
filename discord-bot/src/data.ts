@@ -7,6 +7,8 @@
 import type { Encounter, Patch, SiteData } from "./types";
 
 export const TTL_MS = 10 * 60 * 1000;
+/** After a failed fetch, don't try the site again for this long: serve the saved copy straight away. */
+export const RETRY_AFTER_MS = 60 * 1000;
 const FETCH_TIMEOUT_MS = 2000;
 const FILES = ["encounters", "patch"] as const;
 type FileName = (typeof FILES)[number];
@@ -22,7 +24,8 @@ export interface DataDeps {
 
 interface Entry { body: unknown; fetchedAt: number }
 const memory = new Map<string, Entry>();
-export function _clearMemoryCache() { memory.clear(); }
+const lastFailure = new Map<string, number>();
+export function _clearMemoryCache() { memory.clear(); lastFailure.clear(); }
 
 export function siteBase(siteUrl: string) { return siteUrl.endsWith("/") ? siteUrl : siteUrl + "/"; }
 const fileUrl = (siteUrl: string, f: FileName) => siteBase(siteUrl) + "content/" + f + ".json";
@@ -50,8 +53,18 @@ async function getFile(siteUrl: string, f: FileName, deps: DataDeps): Promise<{ 
   const fetchFn = deps.fetchFn || fetch;
 
   let cached: Entry | null = memory.get(url) || null;
-  if (!cached && deps.cache) cached = await readCacheApi(deps.cache, url);
+  if ((!cached || now - cached.fetchedAt >= TTL_MS) && deps.cache) {
+    // Memory is empty or old: another isolate may have saved a fresher copy in the Cache API.
+    const shared = await readCacheApi(deps.cache, url);
+    if (shared && (!cached || shared.fetchedAt > cached.fetchedAt)) cached = shared;
+  }
   if (cached && now - cached.fetchedAt < TTL_MS) { memory.set(url, cached); return { body: cached.body, stale: false }; }
+
+  const failedAt = lastFailure.get(url);
+  if (failedAt !== undefined && now - failedAt < RETRY_AFTER_MS) {
+    if (cached) return { body: cached.body, stale: true };
+    throw new GuideUnavailable(`Could not load ${url} (failed ${Math.round((now - failedAt) / 1000)} s ago)`);
+  }
 
   try {
     const ctrl = new AbortController();
@@ -64,20 +77,33 @@ async function getFile(siteUrl: string, f: FileName, deps: DataDeps): Promise<{ 
     const body = JSON.parse(text);
     const entry = { body, fetchedAt: now };
     memory.set(url, entry);
+    lastFailure.delete(url);
     if (deps.cache) {
       const p = writeCacheApi(deps.cache, url, text, now);
       if (deps.waitUntil) deps.waitUntil(p); else await p;
     }
     return { body, stale: false };
   } catch (err) {
+    lastFailure.set(url, now);
     if (cached) return { body: cached.body, stale: true };
     throw new GuideUnavailable(`Could not load ${url}: ${(err as Error).message}`);
   }
 }
 
+const encountersOf = new WeakMap<object, Encounter[]>();
+function encountersFrom(body: unknown): Encounter[] {
+  if (!body || typeof body !== "object") return [];
+  let list = encountersOf.get(body);
+  if (!list) {
+    list = ((body as { encounters?: Encounter[] }).encounters || []).filter((e) => e && e.id && Array.isArray(e.bosses));
+    encountersOf.set(body, list);
+  }
+  return list;
+}
+
 export async function loadSiteData(siteUrl: string, deps: DataDeps = {}): Promise<SiteData> {
   const [enc, patch] = await Promise.all(FILES.map((f) => getFile(siteUrl, f, deps)));
-  const encounters = ((enc.body as { encounters?: Encounter[] }).encounters || []).filter((e) => e && e.id && Array.isArray(e.bosses));
+  const encounters = encountersFrom(enc.body); // same array for the same fetched copy
   return { siteUrl: siteBase(siteUrl), encounters, patch: (patch.body || {}) as Patch, stale: enc.stale || patch.stale };
 }
 

@@ -68,3 +68,13 @@ describe("trimming", () => {
     expect(embedLength(em)).toBeLessThanOrEqual(LIMITS.embedTotal);
   });
 });
+
+describe("role duty shortening on boss cards", () => {
+  it("doesn't cut at abbreviations like e.g. or vs.", () => {
+    const e: Encounter = { id: "x", name: "X", type: "sword-trial", level: 1, players: 5,
+      roles: [{ role: "Tank", duties: { b: "Stand left, e.g. near the pillar, and taunt vs. adds. Then move." } }],
+      bosses: [{ id: "b", name: "B", mechanics: [{ name: "M", trigger: "t", response: "r" }] }] };
+    const roles = bossEmbed("https://s/", e, e.bosses[0]).fields!.find((f) => f.name === "Roles to assign")!;
+    expect(roles.value).toBe("**Tank**: Stand left, e.g. near the pillar, and taunt vs. adds.");
+  });
+});

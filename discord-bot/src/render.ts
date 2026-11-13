@@ -14,7 +14,17 @@ export const bossUrl = (site: string, e: Encounter, b: Boss) => encUrl(site, e, 
 const shortName = (s: string) => s.replace(/\s*\([^)]*\)\s*/g, " ").trim();
 const arr = <T>(x: T[] | T | null | undefined): T[] => (Array.isArray(x) ? x : x == null || (x as unknown) === "" ? [] : [x]);
 const noDot = (s: string) => String(s || "").trim().replace(/[.。]+$/, "");
-const firstSentence = (s: string, max = 160) => clip((String(s).match(/^.*?[.!?](?=\s|$)/) || [String(s)])[0], max);
+const ABBREV = new Set(["e.g", "i.e", "vs", "etc", "approx", "cf", "no", "st", "lv", "min", "sec"]);
+/** First sentence, not fooled by "e.g." / "vs." / single initials. */
+function firstSentence(text: string, max = 160) {
+  const s = String(text);
+  for (const m of s.matchAll(/[.!?](?=\s|$)/g)) {
+    const word = (s.slice(0, m.index).match(/(\S+)$/) || ["", ""])[1].toLowerCase().replace(/^[(\[]/, "");
+    if (m[0] === "." && (ABBREV.has(word) || /^[a-z]$/i.test(word))) continue;
+    return clip(s.slice(0, m.index! + 1), max);
+  }
+  return clip(s, max);
+}
 const WARN = "⚠";
 
 /** "Lv 100 · 5 players" style header line for an encounter. */

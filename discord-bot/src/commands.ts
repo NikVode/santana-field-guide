@@ -4,7 +4,16 @@ import { LIMITS, packMessages, type Embed } from "./embed";
 import { autocomplete, buildIndex, resolve, type Prefer } from "./match";
 import { beforeEmbed, bossEmbed, rolesEmbed, talentsEmbed } from "./render";
 import { buildTimes, selectTimes, timesChoices, timesEmbed } from "./times";
-import type { SiteData } from "./types";
+import type { Encounter, SiteData } from "./types";
+
+// The data layer hands back the same encounters array for the same fetched copy,
+// so the search index is built once per copy instead of on every keystroke.
+const indexes = new WeakMap<Encounter[], ReturnType<typeof buildIndex>>();
+function indexFor(encounters: Encounter[]) {
+  let idx = indexes.get(encounters);
+  if (!idx) { idx = buildIndex(encounters); indexes.set(encounters, idx); }
+  return idx;
+}
 
 const STRING = 3, BOOLEAN = 5;
 const nameOpt = (description: string) => ({ type: STRING, name: "name", description, required: true, autocomplete: true });
@@ -66,13 +75,13 @@ export function runCommand(cmd: string, opts: Opts, data: SiteData, now = new Da
     const what = String(opts.what || "");
     const sel = selectTimes(items, what);
     if (!sel) {
-      const opts = timesChoices(items, "").map((c) => c.name).slice(0, 12).join(", ");
-      return reply([{ content: `Nothing upcoming matches **${what.slice(0, 80)}**. Try one of: ${opts}` }]);
+      const known = timesChoices(items, "").map((c) => c.name).slice(0, 12).join(", ");
+      return reply([{ content: `Nothing upcoming matches **${what.slice(0, 80)}**. Try one of: ${known}` }]);
     }
     return reply([{ ...(stale ? { content: stale } : {}), embeds: [timesEmbed(data.patch, sel.items, sel.title, !!what, site)] }]);
   }
 
-  const index = buildIndex(data.encounters);
+  const index = indexFor(data.encounters);
   const r = resolve(index, String(opts.name || ""), preferFor(cmd));
   if (!r.ok) return { messages: [notFound(cmd, String(opts.name || ""), r.suggestions)], ephemeral: true };
   const t = r.target;
@@ -96,7 +105,7 @@ export function runCommand(cmd: string, opts: Opts, data: SiteData, now = new Da
 
 export function runAutocomplete(cmd: string, focused: { name: string; value: string }, data: SiteData, now = new Date()) {
   if (cmd === "times") return timesChoices(buildTimes(data.patch, now), focused.value);
-  return autocomplete(buildIndex(data.encounters), focused.value, preferFor(cmd), 25);
+  return autocomplete(indexFor(data.encounters), focused.value, preferFor(cmd), 25);
 }
 
 export { LIMITS };

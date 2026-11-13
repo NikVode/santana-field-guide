@@ -35,17 +35,50 @@ async function buildReply(env: Env, ctx: ExecutionContext, cmd: string, opts: Re
   }
 }
 
-async function sendFollowups(env: Env, token: string, reply: Reply, fromIndex: number, editOriginal: boolean) {
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** Send to the interaction webhook, retrying while Discord hasn't registered our first response yet. */
+async function webhook(env: Env, token: string, path: string, method: string, body?: unknown): Promise<boolean> {
+  const url = `${API}/webhooks/${env.DISCORD_APPLICATION_ID}/${token}${path}`;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    try {
+      const res = await fetch(url, { method, headers: { "content-type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
+      if (res.ok) return true;
+      const text = await res.text();
+      // 404 (Unknown Webhook / Interaction) right after responding means Discord isn't ready yet; 429 is a rate limit.
+      if (res.status !== 404 && res.status !== 429 && res.status < 500) { console.error(`Discord webhook ${method} ${path || "/"} failed`, res.status, text); return false; }
+    } catch (err) {
+      console.error(`Discord webhook ${method} ${path || "/"} attempt ${attempt + 1} threw`, err);
+    }
+    await sleep(400 * (attempt + 1));
+  }
+  console.error(`Discord webhook ${method} ${path || "/"} gave up after retries`);
+  return false;
+}
+
+/**
+ * Deliver messages after the interaction response. `deferredEphemeral` is set when we deferred
+ * (null when the first message already went out as the response). Each message is tried on its
+ * own, so one failure doesn't stop the rest.
+ */
+export async function sendFollowups(env: Env, token: string, reply: Reply, deferredEphemeral: boolean | null) {
+  await sleep(250); // give Discord a moment to register the initial response
   const flags = reply.ephemeral ? EPHEMERAL : 0;
-  for (let i = editOriginal ? 0 : fromIndex; i < reply.messages.length; i++) {
-    const first = editOriginal && i === 0;
-    const url = `${API}/webhooks/${env.DISCORD_APPLICATION_ID}/${token}${first ? "/messages/@original" : ""}`;
-    const res = await fetch(url, {
-      method: first ? "PATCH" : "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...reply.messages[i], allowed_mentions: NO_PINGS, ...(first ? {} : { flags }) }),
-    });
-    if (!res.ok) console.error("Discord webhook failed", res.status, await res.text());
+  let start = 1;
+  if (deferredEphemeral !== null) {
+    if (reply.ephemeral && !deferredEphemeral) {
+      // We deferred publicly but the answer must be private (e.g. "guide unavailable"):
+      // remove the public placeholder and send everything as private follow-ups.
+      await webhook(env, token, "/messages/@original", "DELETE");
+      start = 0;
+    } else {
+      const ok = await webhook(env, token, "/messages/@original", "PATCH", { ...reply.messages[0], allowed_mentions: NO_PINGS });
+      if (!ok) console.error("Could not fill in the deferred reply (message 1)");
+    }
+  }
+  for (let i = start; i < reply.messages.length; i++) {
+    const ok = await webhook(env, token, "", "POST", { ...reply.messages[i], allowed_mentions: NO_PINGS, flags });
+    if (!ok) console.error(`Could not send follow-up message ${i + 1} of ${reply.messages.length}`);
   }
 }
 
@@ -71,10 +104,10 @@ export async function handleInteraction(i: Interaction, env: Env, ctx: Execution
     const reply = await Promise.race([work, timeout(RESPOND_WITHIN_MS, null)]);
     if (!reply) {
       // Too slow: acknowledge now, then edit the reply (and add any extra messages) when ready.
-      ctx.waitUntil(work.then((r) => sendFollowups(env, i.token, { ...r, ephemeral }, 0, true)));
+      ctx.waitUntil(work.then((r) => sendFollowups(env, i.token, r, ephemeral)));
       return json({ type: R.DEFERRED, data: { flags: ephemeral ? EPHEMERAL : 0 } });
     }
-    if (reply.messages.length > 1) ctx.waitUntil(sendFollowups(env, i.token, reply, 1, false));
+    if (reply.messages.length > 1) ctx.waitUntil(sendFollowups(env, i.token, reply, null));
     return json({ type: R.MESSAGE, data: { ...reply.messages[0], allowed_mentions: NO_PINGS, flags: reply.ephemeral ? EPHEMERAL : 0 } });
   }
 

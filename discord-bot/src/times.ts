@@ -100,20 +100,20 @@ export function buildTimes(patch: Patch, now: Date = new Date(), rules: Rule[] =
       continue;
     }
     const text = String(m.date || "");
-    const [a, b] = text.split(/\s*(?:→|->)\s*/);
-    const start = parseServerDate(a, off);
-    if (!start) continue; // no parseable date: skip rather than guess
-    if (b !== undefined) {
-      const end = parseServerDate(b, off);
-      if (!end) continue;
+    const parts = text.split(/\s*(?:→|->)\s*/);
+    const start = parseServerDate(parts[0], off);
+    if (!start) { console.warn(`times: milestone "${m.label}" has no date the bot can read: ${text}`); continue; }
+    const end = parts.length > 1 ? parseServerDate(parts[parts.length - 1], off) : null;
+    if (parts.length > 1 && !end) console.warn(`times: can't read the end of "${m.label}" (${text}); using its start date`);
+    if (end) {
       const upcoming = now.getTime() < start.getTime();
       items.push({ ...base, at: upcoming ? start : end, until: end, verb: upcoming ? "starts" : "ends", details: [text, m.note || ""].filter(Boolean) });
-      milestoneDays.push({ day: dayKey(start, off), w: words(m.label) });
     } else {
-      const dateOnly = !HAS_TIME.test(text);
-      items.push({ ...base, at: start, until: dateOnly ? new Date(start.getTime() + DAY) : start, dateOnly, details: [text, m.note || ""].filter(Boolean) });
-      milestoneDays.push({ day: dayKey(start, off), w: words(m.label) });
+      const dateOnly = !HAS_TIME.test(parts[0]);
+      items.push({ ...base, at: start, until: dateOnly ? new Date(start.getTime() + DAY) : start, dateOnly,
+        verb: parts.length > 1 ? "starts" : undefined, details: [text, m.note || ""].filter(Boolean) });
     }
+    milestoneDays.push({ day: dayKey(start, off), w: words(m.label) });
   }
 
   // Coming soon (date only), minus entries that repeat a milestone on the same server day
