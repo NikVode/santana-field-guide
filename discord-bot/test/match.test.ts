@@ -10,6 +10,20 @@ beforeAll(async () => { data = await liveData(); index = buildIndex(data.encount
 
 const top = (q: string, prefer: "boss" | "encounter" = "boss", n = 3) => autocomplete(index, q, prefer).slice(0, n).map((c) => c.value);
 
+describe("names Discord sends back", () => {
+  it("accepts the bot's own choice labels, not just ids", () => {
+    for (const e of data.encounters) {
+      const label = autocomplete(index, e.name, "encounter").find((c) => c.value === e.id)!.name;
+      const r = resolve(index, label, "encounter");
+      expect(r.ok && r.target.enc.id, label).toBe(e.id);
+    }
+    const r = resolve(index, "Landscourge Thunder · Sword Trial Lv 91 · 2 bosses", "encounter");
+    expect(r.ok && r.target.key).toBe("landscourge-thunder");
+    const b = resolve(index, "Lodestar (Swordmaster) · Compass & Chime (ST Lv 100)", "boss");
+    expect(b.ok && b.target.key).toBe("compass-chime/lodestar");
+  });
+});
+
 describe("autocomplete (live data)", () => {
   it("returns at most 25 choices, each within Discord's 100-char limits", () => {
     for (const q of ["", "a", "e", "the", "lv", "s"]) {

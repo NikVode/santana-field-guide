@@ -10,7 +10,7 @@ export type Target =
   | { kind: "boss"; key: string; enc: Encounter; boss: Boss };
 
 interface Entry { target: Target; label: string; terms: string[]; aliasTerms: string[] }
-export interface Index { entries: Entry[]; byKey: Map<string, Entry> }
+export interface Index { entries: Entry[]; byKey: Map<string, Entry>; byLabel: Map<string, Entry> }
 
 /** lowercase, apostrophes dropped, other punctuation -> space, collapsed. */
 export const norm = (s: string) => String(s).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "")
@@ -40,7 +40,8 @@ type AliasMap = Record<string, string | string[]>;
 export function buildIndex(encounters: Encounter[], aliases: AliasMap = (aliasFile as { aliases: AliasMap }).aliases): Index {
   const entries: Entry[] = [];
   const byKey = new Map<string, Entry>();
-  const add = (en: Entry) => { entries.push(en); byKey.set(en.target.key, en); };
+  const byLabel = new Map<string, Entry>();
+  const add = (en: Entry) => { entries.push(en); byKey.set(en.target.key, en); byLabel.set(norm(en.label), en); };
   for (const e of encounters) {
     const levels = [e.level, ...(e.variants || []).map((v) => v.level)];
     const lvTerms = levels.flatMap((l) => [`lv${l} ${short(e.type)}`, `lv ${l} ${short(e.type)}`, `${short(e.type)}${l}`, `${short(e.type)} ${l}`, `${l} ${short(e.type)}`]);
@@ -58,7 +59,7 @@ export function buildIndex(encounters: Encounter[], aliases: AliasMap = (aliasFi
       if (en) en.aliasTerms.push(norm(nick)); // aliases pointing at ids the site no longer has are ignored
     }
   }
-  return { entries, byKey };
+  return { entries, byKey, byLabel };
 }
 
 /** 0 exact, 1 prefix, 2 word prefix, 3 substring, 4 compact substring; aliases +0.5; null = no match. */
@@ -131,8 +132,15 @@ export type Resolved = { ok: true; target: Target } | { ok: false; suggestions: 
 /** Resolve a picked autocomplete value or free text. */
 export function resolve(index: Index, value: string, prefer: Prefer): Resolved {
   const raw = String(value || "").trim();
-  const direct = index.byKey.get(raw);
+  // A picked choice normally arrives as its id, but Discord sometimes sends the choice's label
+  // instead (e.g. when the list hadn't finished loading), so accept our own labels too.
+  const direct = index.byKey.get(raw) || index.byLabel.get(norm(raw));
   if (direct) return { ok: true, target: direct.target };
+  // "Name · Sword Trial Lv 91 · 2 bosses" or "Boss · Raid (ST Lv 100)": match on the name part.
+  if (raw.includes("·")) {
+    const head = raw.split("·")[0].trim();
+    if (head && head !== raw) { const r = resolve(index, head, prefer); if (r.ok) return r; }
+  }
   const q = norm(raw);
   if (!q) return { ok: false, suggestions: suggest(index, raw) };
   const ranked = rank(index, raw, prefer);

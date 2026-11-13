@@ -2,6 +2,7 @@
 // Guild War) plus the extra rules in times.json. All instants come from the site's own
 // parseServerDate / resetInfo logic (src/site.ts). Discord renders <t:...> in each reader's zone.
 
+import { cleanNote } from "./clean";
 import timesFile from "../times.json";
 import { buildEmbed, L, type Embed, type Line } from "./embed";
 import { COLOR } from "./render";
@@ -59,14 +60,14 @@ export function buildTimes(patch: Patch, now: Date = new Date(), rules: Rule[] =
   const resetItem = (id: "daily" | "weekly", label: string, at: Date) => {
     const also = folded(id);
     items.push({ id, label: label + (also.length ? ` (also: ${also.map((r) => r.label).join(", ")})` : ""), tags: ["resets", id], at, until: at,
-      details: [patch.resets?.note || "", ...also.map((r) => `${r.label}: same time. Source: ${r.source}`)].filter(Boolean) });
+      details: [cleanNote(patch.resets?.note), ...also.map((r) => `${r.label}: same time.`)].filter(Boolean) });
   };
   resetItem("daily", "Daily reset", info.nextDaily);
   resetItem("weekly", "Weekly reset", info.nextWeekly);
   for (const r of rules.filter((r) => !r.sameAs && r.time)) {
     const o = r.utcOffset ?? off, hm = parseHM(r.time), wd = r.weekday ?? null;
     const at = new Date(lastReset(now, o, hm, wd).getTime() + (wd == null ? DAY : 7 * DAY));
-    items.push({ id: slug(r.id || r.label), label: r.label, tags: ["resets"], at, until: at, details: [`Source: ${r.source}`] });
+    items.push({ id: slug(r.id || r.label), label: r.label, tags: ["resets"], at, until: at, details: [] });
   }
 
   // Guild War (site data), the site's Group Tools logic per battlegroup
@@ -79,21 +80,21 @@ export function buildTimes(patch: Patch, now: Date = new Date(), rules: Rule[] =
     const first = sub[0];
     items.push({ id: "guildwar", label: `Guild War: next is ${first.label}`, tags: ["resets", "guildwar"], at: first.at,
       until: new Date(first.at.getTime() + 3600e3), running: first.running, sub,
-      details: [`${gw.dayLabel || ""} ${gw.time} on each battlegroup's own clock.`.trim(), gw.note || ""].filter(Boolean) });
+      details: [`${gw.dayLabel || ""} ${gw.time} on each battlegroup's own clock.`.trim(), cleanNote(gw.note)].filter(Boolean) });
   }
 
   // Season end (site: parseServerDate(endDate + "T" + endTime))
   if (season.endDate) {
     const at = parseServerDate(season.endDate + (season.endTime ? "T" + season.endTime : ""), off);
     if (at) items.push({ id: "season", label: `${season.name || "Season"} ends (Arena & Taiping Mausoleum season)`, tags: ["season", "arena", "mausoleum"],
-      at, until: at, dateOnly: !season.endTime, details: [], warn: season.needsVerification ? season.verifyNote || "Not confirmed yet." : undefined });
+      at, until: at, dateOnly: !season.endTime, details: [] });
   }
 
   // Milestones: `at` when present (as the site does), else the date text
   const milestoneDays: { day: string; w: Set<string> }[] = [];
   for (const m of season.milestones || []) {
     const id = slug(m.label);
-    const base = { id, label: m.label, tags: tagsFor(m.label), details: [m.date && m.at ? m.date : "", m.note || ""].filter(Boolean) as string[] };
+    const base = { id, label: m.label, tags: tagsFor(m.label), details: [m.date && m.at ? m.date : "", cleanNote(m.note)].filter(Boolean) as string[] };
     if (m.at) {
       const at = parseServerDate(m.at, off);
       if (at) { items.push({ ...base, at, until: at, dateOnly: !HAS_TIME.test(m.at) }); milestoneDays.push({ day: dayKey(at, off), w: words(m.label) }); }
@@ -107,11 +108,11 @@ export function buildTimes(patch: Patch, now: Date = new Date(), rules: Rule[] =
     if (parts.length > 1 && !end) console.warn(`times: can't read the end of "${m.label}" (${text}); using its start date`);
     if (end) {
       const upcoming = now.getTime() < start.getTime();
-      items.push({ ...base, at: upcoming ? start : end, until: end, verb: upcoming ? "starts" : "ends", details: [text, m.note || ""].filter(Boolean) });
+      items.push({ ...base, at: upcoming ? start : end, until: end, verb: upcoming ? "starts" : "ends", details: [text, cleanNote(m.note)].filter(Boolean) });
     } else {
       const dateOnly = !HAS_TIME.test(parts[0]);
       items.push({ ...base, at: start, until: dateOnly ? new Date(start.getTime() + DAY) : start, dateOnly,
-        verb: parts.length > 1 ? "starts" : undefined, details: [text, m.note || ""].filter(Boolean) });
+        verb: parts.length > 1 ? "starts" : undefined, details: [text, cleanNote(m.note)].filter(Boolean) });
     }
     milestoneDays.push({ day: dayKey(start, off), w: words(m.label) });
   }
@@ -187,12 +188,11 @@ export function timesEmbed(patch: Patch, items: TimeItem[], title: string, detai
   const desc: Line[] = [];
   if (!items.length) desc.push(L("Nothing upcoming in the guide right now.", 1));
   for (const i of items) {
-    desc.push(L(`**${i.label}**${i.warn ? " ⚠" : ""}`, 1), L(whenLine(i, off), 1));
+    desc.push(L(`**${i.label}**`, 1), L(whenLine(i, off), 1));
     if (detailed) {
       if (!i.dateOnly && !i.sub) desc.push(L(`_${serverText(i.at, off)}_`, 2));
       for (const s of i.sub || []) desc.push(L(`• ${s.label}: ${s.running ? `running now (started ${ts(s.at, "R")})` : `${ts(s.at, "R")} · ${ts(s.at, "f")}`}`, 1));
       for (const d of i.details) desc.push(L(`_${d}_`, 3));
-      if (i.warn) desc.push(L(`⚠ _${i.warn}_`, 2));
     }
     desc.push(L("", 1));
   }
